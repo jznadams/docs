@@ -1,0 +1,116 @@
+<h1 id="connecting-to-respoke-with-asterisk">Connecting to Respoke with Asterisk</h1>
+<h2 id="summary">Summary</h2>
+<p>In the course of your app development, you may find it convenient to place calls from or into your <a href="http://asterisk.org/">Asterisk</a> phone system. Asterisk’s <a href="https://github.com/respoke/chan_respoke">Respoke module</a> makes this possible. This tutorial only covers calls from a web app into Asterisk.</p>
+<h3 id="assumptions">Assumptions</h3>
+<ol>
+<li>You have a Respoke app with an app secret.</li>
+<li>You have an Asterisk server on which you have administrative access.</li>
+<li>You are comfortable compiling and configuring Asterisk.</li>
+</ol>
+<h2 id="setup">Setup</h2>
+<h3 id="1-install-asterisk-from-the-13-branch-in-svn">1: Install Asterisk from the 13 branch in SVN</h3>
+<p>Install Asterisk from the <a href="http://svn.asterisk.org/svn/asterisk/branches/13/">13 branch in SVN</a>. How to install Asterisk is outside the scope of this document, but if Asterisk is not already installed and you are unsure how to proceed see the <a href="https://wiki.asterisk.org/wiki/display/AST/Installing+Asterisk">Asterisk wiki</a> for more information. Also <a href="https://wiki.asterisk.org/wiki/display/AST/Building+and+Installing+pjproject">install pjproject</a>.</p>
+<h3 id="2-install-the-respoke-asterisk-module">2: Install the Respoke Asterisk module</h3>
+<p>Once Asterisk has been installed on your server, download <a href="https://github.com/respoke/chan_respoke">the Respoke Asterisk module from GitHub</a>. Enter into the chan_respoke directory and issue the following command with superuser access. See the included README file for more information.</p>
+<pre><code>$ git clone https://github.com/respoke/chan_respoke.git
+$ cd chan_respoke
+$ make &amp;&amp; sudo make install
+</code></pre><h3 id="3-set-up-tls-keys-for-connecting-securely-to-respoke">3. Set up TLS keys for connecting securely to Respoke</h3>
+<p>On your Asterisk server, make a directory named “keys” to store your keys in. This code assumes Asterisk has been installed inside /etc/, but this may be different on your server.</p>
+<pre><code>$ cd /etc/asterisk
+$ mkdir keys
+$ cd keys
+</code></pre><p>Next, use the “ast_tls_cert” script in the “contrib/scripts” directory inside the Asterisk source code directory to make a self-signed certificate authority and an Asterisk certificate. You’ll be asked to enter a passphrase for your key. Remember it! You’ll need to enter it three times. You may have to use <code>sudo</code> to write the keys out, but remember that you shouldn’t run Asterisk as root.</p>
+<pre><code>$ # cd into the directory where the Asterisk source code is located
+$ ./contrib/scripts/ast_tls_cert -C respoke-asterisk.mycompany.com -O &quot;My Respoke App&quot; -d /etc/asterisk/keys
+</code></pre><p>Now generate the certificate.  You’ll be asked to enter in your passphrase again.</p>
+<pre><code>$ ./contrib/scripts/ast_tls_cert -m client -c /etc/asterisk/keys/ca.crt -k /etc/asterisk/keys/ca.key -C respoke-asterisk.myrespokeapp.com -O &quot;My Respoke App&quot; -d /etc/asterisk/keys -o respoke-asterisk.myrespokeapp.com
+</code></pre><h3 id="4-configure-the-respoke-module-for-asterisk">4. Configure the Respoke module for Asterisk</h3>
+<p>Create a “respoke.conf” file under /etc/asterisk (or wherever your Asterisk configuration files are installed) and add the following settings. These settings allows anonymous access into Asterisk from the configured Respoke app. Incoming offers, for instance, are passed into the dialplan (default context) where they are accepted or rejected based upon configured extensions.</p>
+<pre><code>[transport]
+type=transport
+protocol=socket.io
+
+[app]
+type=app
+app_secret=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX ;Respoke app secret
+
+[endpoint_t](!) ; template for endpoints below
+type=endpoint
+transport=transport
+app=app
+context=default
+disallow=all
+allow=ulaw
+dtls_verify=fingerprint
+dtls_cert_file=/etc/asterisk/keys/asterisk.pem
+dtls_ca_file=/etc/asterisk/keys/ca.crt
+dtls_setup=actpass
+turn=yes
+
+[anonymous](endpoint_t)
+register=no
+
+[sales](endpoint_t) ; put your desired Respoke endpoint id in the square brackets
+
+[support](endpoint_t) ; put your desired Respoke endpoint id in the square brackets
+</code></pre><h3 id="5-configure-asterisk-call-support">5. Configure Asterisk Call Support</h3>
+<p>After adding the respoke.conf file, the rest of the setup follows a typical Asterisk call configuration setup. In this example we want to be able to dial two SIP phones, one for “sales” and one for “support”. Add the following to pjsip.conf:</p>
+<pre><code>[transport]
+type=transport
+protocol=udp
+bind=0.0.0.0
+
+[endpoint_t](!)
+type=endpoint
+transport=transport
+context=default
+direct_media=no
+disallow=all
+allow=ulaw
+
+[aor_t](!)
+type=aor
+max_contacts=1
+
+[sales](aor_t)
+contact= ; the sales phone sip uri
+
+[sales](endpoint_t)
+aors=sales
+
+[support](aor_t)
+contact= ; the support phone sip uri
+
+[support](endpoint_t)
+aors=support
+</code></pre><p>Be sure to add the appropriate sip uri for each contact (sales and support). Now add the extensions to the dialplan’s default context in extensions.conf:</p>
+<pre><code>[general]
+
+[default]
+exten =&gt; sales,1,Dial(PJSIP/sales)
+    same =&gt; n,Hangup
+
+exten =&gt; support,1,Dial(PJSIP/support)
+    same =&gt; n,Hangup
+</code></pre><p>That should be it!  Asterisk should now be ready to participate in a basic Respoke click to call scenario.</p>
+<h3 id="6-call-your-new-asterisk-endpoint-">6. Call your new Asterisk endpoint.</h3>
+<p>All that’s left to be done is to set up your web app to call your new Asterisk endpoint.</p>
+<p>Put this in your HTML:</p>
+<pre><code>&lt;script type=&#39;text/javascript&#39; src=&#39;https://cdn.respoke.io/respoke.min.js&#39;&gt;&lt;/script&gt;
+</code></pre><p>And use this JavaScript, which will call the “sales” endpoint.</p>
+<pre><code>var client = respoke.createClient({
+    endpointId: &quot;bob&quot;,
+    appId: &quot;XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX&quot;,
+    developmentMode: true
+});
+
+client.connect({
+    onSuccess: function () {
+        // call Asterisk
+        client.startAudioCall({
+            endpointId: &quot;sales&quot;
+        });
+    }
+});
+</code></pre>

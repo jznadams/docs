@@ -1,0 +1,253 @@
+<h1 id="build-a-video-chat-app">Build a Video Chat App</h1>
+<p>Leveraging the power of Respoke, you can make a 100% client-side video chat app in minutes. This tutorial uses development mode for ease of development, but all apps should be converted to using <a href="/tutorials/brokered-auth.html">brokered authentication</a> before being published.</p>
+<p><em>This examples uses <a href="http://angularjs.org">Angular.js</a>.</em></p>
+<div class="alert alert-info">
+    Make sure you have an app ID handy. <a href="https://portal.respoke.io/#apps">Respoke dev console &raquo;</a>
+</div>
+
+
+<h3 id="step-one-setup">Step One: Setup</h3>
+<p>Include some scripts.</p>
+<pre><code>&lt;!-- Respoke client library --&gt;
+&lt;script src=&quot;https://cdn.respoke.io/respoke.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- Angular.js, used in this example --&gt;
+&lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.min.js&quot;&gt;&lt;/script&gt;
+</code></pre><p>Setup Angular in your HTML.</p>
+<pre><code>&lt;html ng-app&gt;
+</code></pre><p>And make a controller with some variables you’ll need soon.</p>
+<pre><code>function RespokeController($scope) {
+
+    $scope.activeCall = null;
+
+    $scope.username = &quot;&quot;;
+    $scope.friendId = &quot;&quot;;
+
+}
+</code></pre><p>Then reference your controller in the HTML. All of your HTML will go inside this div.</p>
+<pre><code>&lt;div ng-controller=&quot;RespokeController&quot;&gt;
+
+&lt;/div&gt;
+</code></pre><h3 id="step-two-pick-a-username-and-connect-to-your-respoke-app">Step Two: Pick a username and connect to your Respoke app</h3>
+<p>Add a place to indicate you are connected.</p>
+<pre><code>&lt;h3 ng-show=&quot;client.isConnected()&quot;&gt;
+    Connected as \{\{username\}\} {{}}
+&lt;/h3&gt;
+</code></pre><p>You’ll need an input box for the username, and a button that calls <code>connect()</code>.</p>
+<pre><code>&lt;div ng-show=&quot;!client.isConnected()&quot;&gt;
+    &lt;input placeholder=&quot;My Username&quot; ng-model=&quot;username&quot; type=&quot;text&quot; autofocus /&gt;
+    &lt;button ng-click=&quot;connect()&quot;&gt;Connect&lt;/button&gt;
+&lt;/div&gt;
+</code></pre><p>Before you can connect as a specific username, you must create a respoke client.</p>
+<pre><code>$scope.client = respoke.createClient({
+    appId: &quot;2a56901d-78ca-4436-b698-4a7a66cdc1fc&quot;, // your app ID goes here
+    baseURL: &quot;https://api.respoke.io&quot;,
+    developmentMode: true
+});
+
+// Listen for the &#39;connect&#39; event, and update the interface
+$scope.client.listen(&#39;connect&#39;, function () {
+    $scope.$apply();
+});
+</code></pre><p>Here’s the button click event for connecting with your username.</p>
+<pre><code>$scope.connect = function () {
+    $scope.client.connect({
+        endpointId: $scope.username
+    });
+};
+</code></pre><p>Now you can connect and it will update the UI when it’s successful.</p>
+<h3 id="step-three-video-calling">Step Three: Video Calling</h3>
+<p>Add some HTML for inputting the username of the person you’d like to call.</p>
+<pre><code>&lt;div ng-show=&quot;client.isConnected()&quot;&gt;
+    &lt;input placeholder=&quot;User to call&quot; ng-model=&quot;friendId&quot; type=&quot;text&quot; autofocus ng-show=&quot;!activeCall&quot; /&gt;
+    &lt;button ng-click=&quot;call()&quot; ng-show=&quot;!activeCall&quot;&gt;Call&lt;/button&gt;
+    &lt;button ng-click=&quot;hangup()&quot; ng-show=&quot;activeCall&quot;&gt;Hang up&lt;/button&gt;
+&lt;/div&gt;
+</code></pre><p>When a call connects, there must be a place to insert the <code>&lt;video&gt;</code>.</p>
+<pre><code>&lt;!-- the person you called --&gt;
+&lt;div id=&quot;remoteVideoSource&quot;&gt;&lt;/div&gt;
+
+&lt;!-- you --&gt;
+&lt;div id=&quot;localVideoSource&quot;&gt;&lt;/div&gt;
+</code></pre><p>Make sure your video has some style.</p>
+<pre><code>#localVideoSource video{
+    height: 100px;
+    margin: -130px 0 0 20px;
+    position: absolute;
+}
+</code></pre><p>Respoke constructs a <code>&lt;video&gt;</code> element for you. <code>setVideo</code> is a function to update the UI.</p>
+<pre><code>function setVideo(elementId, videoElement) {
+    var videoParent = document.getElementById(elementId);
+    videoParent.innerHTML = &quot;&quot;;
+    videoParent.appendChild(videoElement);
+}
+</code></pre><p>Throw the call options in an object. <code>setVideo</code> is called inside the callbacks.</p>
+<pre><code>var callOptions = {
+    constraints: {audio: true, video: true},
+
+    // your video
+    onPreviewLocalMedia: function(evt) {
+        setVideo(&#39;localVideoSource&#39;, evt.element)
+    },
+    // your video
+    onLocalMedia: function(evt) {
+        setVideo(&#39;localVideoSource&#39;, evt.element)
+    },
+
+    // their video
+    onConnect: function(evt) {
+        setVideo(&#39;remoteVideoSource&#39;, evt.element)
+    }
+
+};
+</code></pre><p>Your friend is an endpoint. Calling them is simple: just invoke <code>startVideoCall</code> on their endpoint.</p>
+<pre><code>$scope.call = function () {
+    var recipientEndpoint = $scope.client.getEndpoint({ id: $scope.friendId });
+    $scope.activeCall = recipientEndpoint.startVideoCall(callOptions);
+};
+
+// provide a way to escape
+$scope.hangup = function () {
+    $scope.activeCall.hangup();
+    $scope.activeCall = null;
+};
+</code></pre><p>Finally, set an event listener for the call.</p>
+<pre><code>$scope.client.listen(&#39;call&#39;, function(evt) {
+    $scope.activeCall = evt.call;
+
+    if ($scope.activeCall.caller !== true) {
+        $scope.activeCall.answer(callOptions);
+
+        // The hangup event indicates the call is over
+        $scope.activeCall.listen(&#39;hangup&#39;, function () {
+            $scope.activeCall = null;
+            $scope.$apply();
+        });
+    }
+    $scope.$apply();
+});
+</code></pre><h3 id="the-entire-burrito">The Entire Burrito</h3>
+<p><a href="video-chat-example.html">See it in action &raquo;</a></p>
+<p><a href="http://jsfiddle.net/ruffrey/Kfp47/1/">Fiddle with it &raquo;</a></p>
+<pre><code>&lt;!doctype html&gt;
+&lt;html ng-app&gt;
+    &lt;head&gt;
+        &lt;!-- Respoke client library --&gt;
+        &lt;script src=&quot;https://cdn.respoke.io/respoke.min.js&quot;&gt;&lt;/script&gt;
+
+        &lt;!-- Angular.js for this example --&gt;
+        &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.min.js&quot;&gt;&lt;/script&gt;
+
+        &lt;style type=&quot;text/css&quot;&gt;
+            #localVideoSource video{
+                height: 100px;
+                margin: -130px 0 0 20px;
+                position: absolute;
+            }
+        &lt;/style&gt;
+
+        &lt;script&gt;
+
+            function setVideo(elementId, videoElement) {
+                var videoParent = document.getElementById(elementId);
+                videoParent.innerHTML = &quot;&quot;;
+                videoParent.appendChild(videoElement);
+            }
+
+            function RespokeController($scope) {
+
+                $scope.activeCall = null;
+
+                $scope.username = &quot;&quot;;
+                $scope.friendId = &quot;&quot;;
+
+                var callOptions = {
+                    constraints: {audio: true, video: true},
+
+                    onPreviewLocalMedia: function(evt) {
+                        setVideo(&#39;localVideoSource&#39;, evt.element)
+                    },
+                    onLocalMedia: function(evt) {
+                        setVideo(&#39;localVideoSource&#39;, evt.element)
+                    },
+
+                    onConnect: function(evt) {
+                        setVideo(&#39;remoteVideoSource&#39;, evt.element)
+                    }
+
+                };
+
+
+                $scope.client = respoke.Client({
+                    appId: &quot;2a56901d-78ca-4436-b698-4a7a66cdc1fc&quot;,
+                    baseURL: &quot;https://api.respoke.io&quot;,
+                    developmentMode: true
+                });
+
+                // Listen for the &#39;connect&#39; event
+                $scope.client.listen(&#39;connect&#39;, function () {
+                    $scope.$apply();
+                });
+
+                // Listen for the &#39;call&#39; event
+                $scope.client.listen(&#39;call&#39;, function(evt) {
+
+                    $scope.activeCall = evt.call;
+
+                    if ($scope.activeCall.caller !== true) {
+                        $scope.activeCall.answer(callOptions);
+                        $scope.activeCall.listen(&#39;hangup&#39;, function () {
+                            $scope.activeCall = null;
+                            $scope.$apply();
+                        });
+                    }
+                    $scope.$apply();
+                });
+
+
+                $scope.connect = function () {
+                    $scope.client.connect({
+                        endpointId: $scope.username
+                    });
+                };
+
+                $scope.call = function () {
+                    var recipientEndpoint = $scope.client.getEndpoint({ id: $scope.friendId });
+                    $scope.activeCall = recipientEndpoint.startVideoCall(callOptions);
+                };
+
+                $scope.hangup = function () {
+                    $scope.activeCall.hangup();
+                    $scope.activeCall = null;
+                };
+
+            }
+
+        &lt;/script&gt;
+
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div ng-controller=&quot;RespokeController&quot;&gt;
+
+            &lt;h3 ng-show=&quot;client.isConnected()&quot;&gt;
+                Connected as \{\{username\}\} {{}}
+            &lt;/h3&gt;
+
+            &lt;div ng-show=&quot;!client.isConnected()&quot;&gt;
+                &lt;input placeholder=&quot;My Username&quot; ng-model=&quot;username&quot; type=&quot;text&quot; autofocus /&gt;
+                &lt;button ng-click=&quot;connect()&quot;&gt;Connect&lt;/button&gt;
+            &lt;/div&gt;
+
+            &lt;div ng-show=&quot;client.isConnected()&quot;&gt;
+                &lt;input placeholder=&quot;User to call&quot; ng-model=&quot;friendId&quot; type=&quot;text&quot; autofocus ng-show=&quot;!activeCall&quot; /&gt;
+                &lt;button ng-click=&quot;call()&quot; ng-show=&quot;!activeCall&quot;&gt;Call&lt;/button&gt;
+                &lt;button ng-click=&quot;hangup()&quot; ng-show=&quot;activeCall&quot;&gt;Hang up&lt;/button&gt;
+            &lt;/div&gt;
+
+            &lt;div id=&quot;remoteVideoSource&quot;&gt;&lt;/div&gt;
+            &lt;div id=&quot;localVideoSource&quot;&gt;&lt;/div&gt;
+
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
