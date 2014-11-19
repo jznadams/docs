@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="padd">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <title>Video Chat - 
+    </title>
+    <meta name="keywords" content="">
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" type="image/ico" href="https://www.respoke.io/favicon.ico">
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Source+Code+Pro">
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+    <link type="text/css" rel="stylesheet" href="https://www.respoke.io/min/production.css">
+    <link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/docco.min.css">
+    <link type="text/css" rel="stylesheet" href="/css/site.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.min.js"></script>
+    <script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+    <script src="/js/padd.js"></script>
+  </head>
+  <body data-spy="scroll" data-target=".secondary-nav">
+    <div id="wrap">
+      <div class="public-site">
+        <div ng-controller="NavController" class="topbar-wrapper opaque">
+          <div bfind-class-foo="@isexcited" class="navigation">
+            <div onclick="$(this).next().find('ul.nav-items').toggle()" class="nav-menu-button">
+              <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+            <div class="nav-container"><a href="" class="www-link"><img src="https://www.respoke.io/images/logo_respoke.png" class="logo"></a>
+              <ul ng-show="menuVisibility !== false" class="nav-items">
+                <li><a href="/#howitworks" class="www-link">How it works</a></li>
+                <li><a href="/#pricing" class="www-link">Pricing</a></li>
+                <li><a href="/">Docs</a></li>
+                <li><a href="http://community.respoke.io">Community</a></li>
+                <li><a href="/#login" class="visible-xs log-in">log in</a></li>
+                <li><a href="javascript:void(0)" onclick="logout()" class="visible-xs log-out">log out</a></li>
+                <li><a href="/#sign-up-form" class="visible-xs sign-up">Sign Up</a></li>
+                <li><a href="" class="visible-xs portal">PORTAL</a></li>
+              </ul>
+              <div ng-show="menuVisibility !== false" class="buttons"><a href="/#login" class="log-in www-link">log in</a><a href="javascript:void(0)" onclick="logout()" class="log-out">log out</a><a href="/#sign-up-form" class="sign-up www-link">Sign Up</a><a href="" class="portal">PORTAL</a></div>
+            </div>
+          </div>
+        </div>
+        <!-- Main Page Content-->
+        <region>
+          <div ng-controller="NavController" class="how-it-works">
+            <div class="how-it-works-container">
+              <div id="content">
+                <div class="row">
+                  <div class="col-md-2">
+                    <div id="main-sidebar-wrap">
+                      <ul id="main-sidebar" class="nav affix">
+                        <li>Respoke Concepts
+                          <ul>
+                            <li><a href="/">Quickstart</a></li>
+                            <li ng-class="{ active: currentPage === ('/concepts/brokered-auth.html') }"><a href="/concepts/brokered-auth.html">Authentication</a></li>
+                            <li ng-class="{ active: currentPage === ('/concepts/calling-to-and-from-a-phone.html') }"><a href="/concepts/calling-to-and-from-a-phone.html">Calling to and from a Phone</a></li>
+                            <li ng-class="{ active: currentPage === ('/concepts/connecting-with-asterisk.html') }"><a href="/concepts/connecting-with-asterisk.html">Connecting with Asterisk</a></li>
+                            <li ng-class="{ active: currentPage === ('/concepts/direct-connection.html') }"><a href="/concepts/direct-connection.html">Direct Connections</a></li>
+                            <li ng-class="{ active: currentPage === ('/concepts/example-apps.html') }"><a href="/concepts/example-apps.html">Example Apps</a></li>
+                            <li ng-class="{ active: currentPage === ('/concepts/rest-api.html') }"><a href="/concepts/rest-api.html">REST API Routes</a></li>
+                            <li ng-class="{ active: currentPage === ('/concepts/roles-and-permissions.html') }"><a href="/concepts/roles-and-permissions.html">Roles &amp; Permissions</a></li>
+                            <li ng-class="{ active: currentPage === ('/concepts/video-chat.html') }"><a href="/concepts/video-chat.html">Video Chat</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="/changelog.html">Changelog</a></li>
+                        <li>Javascript Client
+                          <ul>
+                            <li ng-class="{ active: currentPage === ('/js-library/libraries.html') }"><a href="/js-library/libraries.html">Libraries</a></li>
+                            <li ng-class="{ active: currentPage === ('/js-library/respoke-js-logs.html') }"><a href="/js-library/respoke-js-logs.html">Respoke.js Logs</a></li>
+                          </ul>
+                        </li>
+                        <li>Admin API
+                          <ul>
+                            <li>Coming soon</li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-md-7">
+                    <div class="content-wrap">
+                      <button id="sidebar-toggle-button" onclick="$('#main-sidebar').toggle();$(this).find('i.glyphicon').toggleClass('hide');" class="btn btn xl btn-primary"><i class="glyphicon glyphicon-th-list"></i><i class="glyphicon glyphicon-remove hide"></i></button>
+                      <article class="article">
+                        <section class="content"><h1 id="build-a-video-chat-app">Build a Video Chat App</h1>
+<p>Leveraging the power of Respoke, you can make a 100% client-side video chat app in minutes. This tutorial uses development mode for ease of development, but all apps should be converted to using <a href="/tutorials/brokered-auth.html">brokered authentication</a> before being published.</p>
+<p><em>This examples uses <a href="http://angularjs.org">Angular.js</a>.</em></p>
+<div class="alert alert-info">
+    Make sure you have an app ID handy. <a href="https://portal.respoke.io/#apps">Respoke dev console &raquo;</a>
+</div>
+
+
+<h3 id="step-one-setup">Step One: Setup</h3>
+<p>Include some scripts.</p>
+<pre><code>&lt;!-- Respoke client library --&gt;
+&lt;script src=&quot;https://cdn.respoke.io/respoke.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- Angular.js, used in this example --&gt;
+&lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.min.js&quot;&gt;&lt;/script&gt;
+</code></pre><p>Setup Angular in your HTML.</p>
+<pre><code>&lt;html ng-app&gt;
+</code></pre><p>And make a controller with some variables you’ll need soon.</p>
+<pre><code>function RespokeController($scope) {
+
+    $scope.activeCall = null;
+
+    $scope.username = &quot;&quot;;
+    $scope.friendId = &quot;&quot;;
+
+}
+</code></pre><p>Then reference your controller in the HTML. All of your HTML will go inside this div.</p>
+<pre><code>&lt;div ng-controller=&quot;RespokeController&quot;&gt;
+
+&lt;/div&gt;
+</code></pre><h3 id="step-two-pick-a-username-and-connect-to-your-respoke-app">Step Two: Pick a username and connect to your Respoke app</h3>
+<p>Add a place to indicate you are connected.</p>
+<pre><code>&lt;h3 ng-show=&quot;client.isConnected()&quot;&gt;
+    Connected as \{\{username\}\} {{}}
+&lt;/h3&gt;
+</code></pre><p>You’ll need an input box for the username, and a button that calls <code>connect()</code>.</p>
+<pre><code>&lt;div ng-show=&quot;!client.isConnected()&quot;&gt;
+    &lt;input placeholder=&quot;My Username&quot; ng-model=&quot;username&quot; type=&quot;text&quot; autofocus /&gt;
+    &lt;button ng-click=&quot;connect()&quot;&gt;Connect&lt;/button&gt;
+&lt;/div&gt;
+</code></pre><p>Before you can connect as a specific username, you must create a respoke client.</p>
+<pre><code>$scope.client = respoke.createClient({
+    appId: &quot;2a56901d-78ca-4436-b698-4a7a66cdc1fc&quot;, // your app ID goes here
+    baseURL: &quot;https://api.respoke.io&quot;,
+    developmentMode: true
+});
+
+// Listen for the &#39;connect&#39; event, and update the interface
+$scope.client.listen(&#39;connect&#39;, function () {
+    $scope.$apply();
+});
+</code></pre><p>Here’s the button click event for connecting with your username.</p>
+<pre><code>$scope.connect = function () {
+    $scope.client.connect({
+        endpointId: $scope.username
+    });
+};
+</code></pre><p>Now you can connect and it will update the UI when it’s successful.</p>
+<h3 id="step-three-video-calling">Step Three: Video Calling</h3>
+<p>Add some HTML for inputting the username of the person you’d like to call.</p>
+<pre><code>&lt;div ng-show=&quot;client.isConnected()&quot;&gt;
+    &lt;input placeholder=&quot;User to call&quot; ng-model=&quot;friendId&quot; type=&quot;text&quot; autofocus ng-show=&quot;!activeCall&quot; /&gt;
+    &lt;button ng-click=&quot;call()&quot; ng-show=&quot;!activeCall&quot;&gt;Call&lt;/button&gt;
+    &lt;button ng-click=&quot;hangup()&quot; ng-show=&quot;activeCall&quot;&gt;Hang up&lt;/button&gt;
+&lt;/div&gt;
+</code></pre><p>When a call connects, there must be a place to insert the <code>&lt;video&gt;</code>.</p>
+<pre><code>&lt;!-- the person you called --&gt;
+&lt;div id=&quot;remoteVideoSource&quot;&gt;&lt;/div&gt;
+
+&lt;!-- you --&gt;
+&lt;div id=&quot;localVideoSource&quot;&gt;&lt;/div&gt;
+</code></pre><p>Make sure your video has some style.</p>
+<pre><code>#localVideoSource video{
+    height: 100px;
+    margin: -130px 0 0 20px;
+    position: absolute;
+}
+</code></pre><p>Respoke constructs a <code>&lt;video&gt;</code> element for you. <code>setVideo</code> is a function to update the UI.</p>
+<pre><code>function setVideo(elementId, videoElement) {
+    var videoParent = document.getElementById(elementId);
+    videoParent.innerHTML = &quot;&quot;;
+    videoParent.appendChild(videoElement);
+}
+</code></pre><p>Throw the call options in an object. <code>setVideo</code> is called inside the callbacks.</p>
+<pre><code>var callOptions = {
+    constraints: {audio: true, video: true},
+
+    // your video
+    onPreviewLocalMedia: function(evt) {
+        setVideo(&#39;localVideoSource&#39;, evt.element)
+    },
+    // your video
+    onLocalMedia: function(evt) {
+        setVideo(&#39;localVideoSource&#39;, evt.element)
+    },
+
+    // their video
+    onConnect: function(evt) {
+        setVideo(&#39;remoteVideoSource&#39;, evt.element)
+    }
+
+};
+</code></pre><p>Your friend is an endpoint. Calling them is simple: just invoke <code>startVideoCall</code> on their endpoint.</p>
+<pre><code>$scope.call = function () {
+    var recipientEndpoint = $scope.client.getEndpoint({ id: $scope.friendId });
+    $scope.activeCall = recipientEndpoint.startVideoCall(callOptions);
+};
+
+// provide a way to escape
+$scope.hangup = function () {
+    $scope.activeCall.hangup();
+    $scope.activeCall = null;
+};
+</code></pre><p>Finally, set an event listener for the call.</p>
+<pre><code>$scope.client.listen(&#39;call&#39;, function(evt) {
+    $scope.activeCall = evt.call;
+
+    if ($scope.activeCall.caller !== true) {
+        $scope.activeCall.answer(callOptions);
+
+        // The hangup event indicates the call is over
+        $scope.activeCall.listen(&#39;hangup&#39;, function () {
+            $scope.activeCall = null;
+            $scope.$apply();
+        });
+    }
+    $scope.$apply();
+});
+</code></pre><h3 id="the-entire-burrito">The Entire Burrito</h3>
+<p><a href="video-chat-example.html">See it in action &raquo;</a></p>
+<p><a href="http://jsfiddle.net/ruffrey/Kfp47/1/">Fiddle with it &raquo;</a></p>
+<pre><code>&lt;!doctype html&gt;
+&lt;html ng-app&gt;
+    &lt;head&gt;
+        &lt;!-- Respoke client library --&gt;
+        &lt;script src=&quot;https://cdn.respoke.io/respoke.min.js&quot;&gt;&lt;/script&gt;
+
+        &lt;!-- Angular.js for this example --&gt;
+        &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.min.js&quot;&gt;&lt;/script&gt;
+
+        &lt;style type=&quot;text/css&quot;&gt;
+            #localVideoSource video{
+                height: 100px;
+                margin: -130px 0 0 20px;
+                position: absolute;
+            }
+        &lt;/style&gt;
+
+        &lt;script&gt;
+
+            function setVideo(elementId, videoElement) {
+                var videoParent = document.getElementById(elementId);
+                videoParent.innerHTML = &quot;&quot;;
+                videoParent.appendChild(videoElement);
+            }
+
+            function RespokeController($scope) {
+
+                $scope.activeCall = null;
+
+                $scope.username = &quot;&quot;;
+                $scope.friendId = &quot;&quot;;
+
+                var callOptions = {
+                    constraints: {audio: true, video: true},
+
+                    onPreviewLocalMedia: function(evt) {
+                        setVideo(&#39;localVideoSource&#39;, evt.element)
+                    },
+                    onLocalMedia: function(evt) {
+                        setVideo(&#39;localVideoSource&#39;, evt.element)
+                    },
+
+                    onConnect: function(evt) {
+                        setVideo(&#39;remoteVideoSource&#39;, evt.element)
+                    }
+
+                };
+
+
+                $scope.client = respoke.Client({
+                    appId: &quot;2a56901d-78ca-4436-b698-4a7a66cdc1fc&quot;,
+                    baseURL: &quot;https://api.respoke.io&quot;,
+                    developmentMode: true
+                });
+
+                // Listen for the &#39;connect&#39; event
+                $scope.client.listen(&#39;connect&#39;, function () {
+                    $scope.$apply();
+                });
+
+                // Listen for the &#39;call&#39; event
+                $scope.client.listen(&#39;call&#39;, function(evt) {
+
+                    $scope.activeCall = evt.call;
+
+                    if ($scope.activeCall.caller !== true) {
+                        $scope.activeCall.answer(callOptions);
+                        $scope.activeCall.listen(&#39;hangup&#39;, function () {
+                            $scope.activeCall = null;
+                            $scope.$apply();
+                        });
+                    }
+                    $scope.$apply();
+                });
+
+
+                $scope.connect = function () {
+                    $scope.client.connect({
+                        endpointId: $scope.username
+                    });
+                };
+
+                $scope.call = function () {
+                    var recipientEndpoint = $scope.client.getEndpoint({ id: $scope.friendId });
+                    $scope.activeCall = recipientEndpoint.startVideoCall(callOptions);
+                };
+
+                $scope.hangup = function () {
+                    $scope.activeCall.hangup();
+                    $scope.activeCall = null;
+                };
+
+            }
+
+        &lt;/script&gt;
+
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div ng-controller=&quot;RespokeController&quot;&gt;
+
+            &lt;h3 ng-show=&quot;client.isConnected()&quot;&gt;
+                Connected as \{\{username\}\} {{}}
+            &lt;/h3&gt;
+
+            &lt;div ng-show=&quot;!client.isConnected()&quot;&gt;
+                &lt;input placeholder=&quot;My Username&quot; ng-model=&quot;username&quot; type=&quot;text&quot; autofocus /&gt;
+                &lt;button ng-click=&quot;connect()&quot;&gt;Connect&lt;/button&gt;
+            &lt;/div&gt;
+
+            &lt;div ng-show=&quot;client.isConnected()&quot;&gt;
+                &lt;input placeholder=&quot;User to call&quot; ng-model=&quot;friendId&quot; type=&quot;text&quot; autofocus ng-show=&quot;!activeCall&quot; /&gt;
+                &lt;button ng-click=&quot;call()&quot; ng-show=&quot;!activeCall&quot;&gt;Call&lt;/button&gt;
+                &lt;button ng-click=&quot;hangup()&quot; ng-show=&quot;activeCall&quot;&gt;Hang up&lt;/button&gt;
+            &lt;/div&gt;
+
+            &lt;div id=&quot;remoteVideoSource&quot;&gt;&lt;/div&gt;
+            &lt;div id=&quot;localVideoSource&quot;&gt;&lt;/div&gt;
+
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></section>
+                      </article><br><br><br><br>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </region>
+      </div>
+      <!-- Footer-->
+      <region>
+        <footer>
+          <div class="content-wrap">
+            <section class="copy">
+              <div class="footer">
+                <div class="footer-container">
+                  <div class="footer-links"><a href="http://digium.com/respoke"><img src="/images/digium_white.png" class="digium-logo"></a></div>
+                  <div class="footer-content">
+                    <p class="copy">Copyright &copy; 2014 D.C.S, LLC</p>
+                    <p class="copy"><a href="mailto:info@respoke.io">info@respoke.io</a></p>
+                  </div>
+                  <div class="footer-links social-links"><a href="https://twitter.com/respoke"><span class="fa fa-twitter"></span></a><a href="https://www.facebook.com/respokeIO"><span class="fa fa-facebook"></span></a><a href="https://plus.google.com/110089434291590810767" rel="publisher"><span class="fa fa-google-plus"></span></a></div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </footer>
+      </region>
+    </div>
+  </body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stellar.js/0.6.2/jquery.stellar.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script>
+  // Scrollspy
+  // TODO: use angular-ui boostrap version instead
+  $('body').scrollspy({ target: '.secondary-nav', offset: 150 });
+  
+  // parallax by http://markdalgleish.com/projects/stellar.js/
+  $.stellar();
+  
+  // affixing the sidebar at high resolutions
+  var resizeEvent = function(event){
+    if($(window).width() > 990) {
+        affixLeftSidebar();
+    }
+  };
+  window.addEventListener('resize', resizeEvent);
+  resizeEvent();
+  
+  // Showing and login and signup
+  (function () {
+      var token = $.cookie('token');
+      var $login = $('.log-in');
+      var $logout = $('.log-out');
+      var $signup = $('.sign-up');
+      var $portal = $('.portal');
+      var $wwwlink = $('.www-link');
+      var $logo = $('img.logo');
+  
+      function loggedIn() {
+          $login.remove();
+          $signup.remove();
+  
+          $portal.css('display', 'inline-block');
+          $logout.css('display', 'inline-block');
+      }
+      function notLoggedIn() {
+          $portal.remove();
+          $logout.remove();
+  
+          //- $login.css('display', 'inline-block');
+          //- $signup.css('display', 'inline-block');
+      }
+  
+      var apiBase = window.location.host.replace('docs', 'api').replace(':2003', ':2000');
+      var apiUrl = apiBase.indexOf('testing.digiumlabs.com') !== -1 ? 'http://' : 'https://';
+      apiUrl += apiBase + '/v1/admins/me';
+      var publicBase = window.location.host.replace('docs', 'www').replace(':2003', ':2001');
+      var publicUrl = publicBase.indexOf('testing.digiumlabs.com') !== -1 ? 'http://' : 'https://';
+      publicUrl += publicBase;
+      var portalBase = window.location.host.replace('docs', 'portal').replace(':2003', ':2002');
+      var portalUrl = portalBase.indexOf('testing.digiumlabs.com') !== -1 ? 'http://' : 'https://';
+      portalUrl += portalBase;
+  
+      if (token) {
+          $.ajax({
+              url: apiUrl,
+              type: 'GET',
+              headers: {
+                  'Admin-Token': token
+              },
+              success: loggedIn,
+              error: notLoggedIn
+          });
+      }
+      else {
+          notLoggedIn();
+      }
+  
+      $portal.attr('href', portalUrl + $portal.attr('href'));
+      $wwwlink.each(function () {
+          $(this).attr('href', publicUrl + $(this).attr('href'))
+      });
+      $logo.attr('src', publicUrl + $logo.attr('src').replace('https://www.respoke.io',''));
+  })();
+  
+  function logout() {
+      $.removeCookie('token', { domain: '.' + window.location.hostname.split('.').slice(-2).join('.') });
+      window.location.reload();
+  }
+  
+  $.ajax({
+        url: '//d3px1qgagsf6ei.cloudfront.net/Scripts/f772acdb-7c45-430c-8c5a-28c3bcbb420e',
+        crossDomain: true,
+        dataType: 'script',
+        success: function () {
+            Payboard.Events.trackPage;
+        },
+        error: function () {
+            console.log("There was an error retrieving the payboard tracking script");
+        }
+    });
+</script>
