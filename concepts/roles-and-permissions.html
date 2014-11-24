@@ -57,22 +57,24 @@
                       <ul id="main-sidebar" class="nav affix">
                         <li>Respoke Concepts
                           <ul>
-                            <li><a href="/">Quickstart</a></li>
+                            <li ng-class="{ active: currentPage === '/' }"><a href="/">Quickstart</a></li>
                             <li ng-class="{ active: currentPage === ('/concepts/brokered-auth.html') }"><a href="/concepts/brokered-auth.html">Authentication</a></li>
                             <li ng-class="{ active: currentPage === ('/concepts/calling-to-and-from-a-phone.html') }"><a href="/concepts/calling-to-and-from-a-phone.html">Calling to and from a Phone</a></li>
                             <li ng-class="{ active: currentPage === ('/concepts/connecting-with-asterisk.html') }"><a href="/concepts/connecting-with-asterisk.html">Connecting with Asterisk</a></li>
-                            <li ng-class="{ active: currentPage === ('/concepts/direct-connection.html') }"><a href="/concepts/direct-connection.html">Direct Connections</a></li>
-                            <li ng-class="{ active: currentPage === ('/concepts/example-apps.html') }"><a href="/concepts/example-apps.html">Example Apps</a></li>
+                            <li ng-class="{ active: currentPage === ('/concepts/libraries.html') }"><a href="/concepts/libraries.html">Libraries</a></li>
                             <li ng-class="{ active: currentPage === ('/concepts/rest-api.html') }"><a href="/concepts/rest-api.html">REST API Routes</a></li>
                             <li ng-class="{ active: currentPage === ('/concepts/roles-and-permissions.html') }"><a href="/concepts/roles-and-permissions.html">Roles &amp; Permissions</a></li>
-                            <li ng-class="{ active: currentPage === ('/concepts/video-chat.html') }"><a href="/concepts/video-chat.html">Video Chat</a></li>
                           </ul>
                         </li>
-                        <li><a href="/changelog.html">Changelog</a></li>
+                        <li ng-class="{ active: currentPage === '/changelog.html' }"><a href="/changelog.html">Changelog</a></li>
+                        <li>&nbsp;</li>
                         <li>Javascript Client
                           <ul>
-                            <li ng-class="{ active: currentPage === ('/js-library/libraries.html') }"><a href="/js-library/libraries.html">Libraries</a></li>
+                            <li><a href="http://respoke.github.io/respoke" target="_blank">Reference&nbsp;<i class="glyphicon glyphicon-share"></i></a></li>
+                            <li ng-class="{ active: currentPage === ('/js-library/direct-connection.html') }"><a href="/js-library/direct-connection.html">Direct Connections</a></li>
+                            <li ng-class="{ active: currentPage === ('/js-library/example-apps.html') }"><a href="/js-library/example-apps.html">Example Apps</a></li>
                             <li ng-class="{ active: currentPage === ('/js-library/respoke-js-logs.html') }"><a href="/js-library/respoke-js-logs.html">Respoke.js Logs</a></li>
+                            <li ng-class="{ active: currentPage === ('/js-library/video-chat.html') }"><a href="/js-library/video-chat.html">Video Chat</a></li>
                           </ul>
                         </li>
                         <li>Admin API
@@ -90,16 +92,13 @@
                         <section class="content"><h1 id="roles-and-permissions">Roles and Permissions</h1>
 <p>In <a href="/tutorials/brokered-auth.html">Brokered Authentication: Securing Your Application</a>, you learn how to secure your app by using tokens to create endpoints and authenticate your users to Respoke.</p>
 <p>To secure your app even further, you can use roles to limit the types of things authenticated users can do.</p>
-<p><br /></p>
-<h3 id="about-roles-and-permissions">About Roles and Permissions</h3>
+<h2 id="about-roles-and-permissions">About Roles and Permissions</h2>
 <p>As your Respoke app grows, you may want your users to have permission to perform only specific actions against Respoke. In this section, you will learn how to <strong>create Roles for your users and assign them to an endpoint</strong> when authentication occurs.</p>
-<p><br /></p>
-<h4 id="concepts">Concepts</h4>
+<h3 id="concepts">Concepts</h3>
 <p><strong>Permissions</strong> live in Respoke and <strong>granularly govern what user may or may not do</strong>, in Respoke.</p>
 <p><strong>Permissions</strong> are granted by your application on a <strong>per-token</strong> basis.</p>
 <p><strong>Roles provide a way to group permissions</strong>. They are created by you via your <a href="https://portal.respoke.io/">dev console</a> or REST API.</p>
-<p><br /></p>
-<h4 id="regarding-dev-mode">Regarding Dev Mode</h4>
+<h3 id="regarding-dev-mode">Regarding Dev Mode</h3>
 <p>It’s only a few lines of code to get started developing with Respoke in development mode. If you have successfully logged an endpoint into Respoke and sent a message, you’re probably already using development mode. The <a href="/">Respoke Quickstart Guide</a> details how to place your Respoke app in development mode, connect, and send messages.</p>
 <p>In development mode Respoke automatically assigns your endpoints a default role. This system role includes a wide set of permissions which make app setup and testing easy.</p>
 <p>The <strong>development mode role</strong> consists of the following permissions:</p>
@@ -110,8 +109,7 @@
 </ul>
 <p><br />
 <strong>It’s undesirable to run your app in development mode all the time.</strong> As your app matures, you’ll want to use roles to limit what your app can do depending on what type of user is authenticated as an endpoint. If you like, you can keep it simple and use a single role for many endpoints, but at least force users to authenticate to your server before letting them connect to Respoke.</p>
-<p><br /></p>
-<h4 id="how-to-create-custom-roles">How To Create Custom Roles</h4>
+<h3 id="how-to-create-custom-roles">How To Create Custom Roles</h3>
 <p>The real power in Roles comes from how you customize them to fit your needs.</p>
 <ol>
 <li>Select the app you’d like this role to be associated with.</li>
@@ -145,7 +143,7 @@
     }
 }
 </code></pre><p><br /></p>
-<h4 id="how-to-construct-permissions-on-a-group">How To Construct Permissions on a Group</h4>
+<h3 id="how-to-construct-permissions-on-a-group">How To Construct Permissions on a Group</h3>
 <p>Group permissions match a group’s name against a permissions rule. You can create a rule with the exact name of the group, with a prefix and a wildcard, or with only a wildcard to match all group names. Respoke will take the most specific rule it can find based on the group’s name and use that set of permissions.</p>
 <p><em>Example</em></p>
 <p>Assume you have the following group rules:</p>
@@ -159,12 +157,12 @@
 Your app sends a request for an endpoint using these rules to join the group <code>buddylistroom5</code>. Respoke will match that group name against the <code>buddylistroom*</code> rule and use the permissions attached to that rule to authorize the endpoint to join the group. If the app sends a request for an endpoint using these rules to join the group <code>testgroup</code>, Respoke will match on the wildcard rule <code>*</code> and use those permissions to determine if the endpoint is allowed to join.</p>
 <p>Respoke uses the longest match paradigm, so for rules like <code>buddy*</code>, <code>buddylist*</code>, and <code>buddylistroom*</code>, a request to join <code>buddylistroom1</code> will only match the <code>buddylistroom*</code> rule.</p>
 <p><br /></p>
-<h3 id="create-roles-programmatically-with-respoke-s-rest-api">Create Roles Programmatically with Respoke’s REST API</h3>
+<h2 id="create-roles-programmatically-with-respoke-s-rest-api">Create Roles Programmatically with Respoke’s REST API</h2>
 <p>Eventually, you may need to create roles programmatically. You can do this with <a href="/reference/rest-api.html">Respoke’s REST API</a> using an App Secret or Admin-Token header.</p>
 <p>Here’s an example of how you could recreate the development mode role as a proper role.</p>
 <pre><code class="xml">POST http://api.respoke.io/v1/roles
 Content-Type: application/json
-App-Secret OR Admin-Token: 28B061B9-A0D4-4E52-A0ED-EB6EA125F82A</code></pre>
+App-Secret <b>OR</b> Admin-Token: 28B061B9-A0D4-4E52-A0ED-EB6EA125F82A</code></pre>
 
 
 <pre><code>{
@@ -190,7 +188,7 @@ App-Secret OR Admin-Token: 28B061B9-A0D4-4E52-A0ED-EB6EA125F82A</code></pre>
 </code></pre><p>Here’s how you could recreate the role listed above in the Create Custom Roles section.</p>
 <pre><code class="xml">POST http://api.respoke.io/v1/roles
 Content-Type: application/json
-App-Secret OR Admin-Token: 28B061B9-A0D4-4E52-A0ED-EB6EA125F82A</code></pre>
+App-Secret <b>OR</b> Admin-Token: 28B061B9-A0D4-4E52-A0ED-EB6EA125F82A</code></pre>
 
 <pre><code>{
     &quot;appId&quot;: &quot;XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX&quot;,
@@ -243,14 +241,53 @@ Content-Type: application/json
 App-Secret: 28B061B9-A0D4-4E52-A0ED-EB6EA125F82A
 </code></pre>
 
-<pre><code>{
-    &quot;appId&quot;: &quot;34A9DDB9-D4AO-52AA-0ADE-EABEA521F2BA&quot;,
-    &quot;endpointId&quot;: &quot;bobsmith&quot;,
-    &quot;roleId&quot;: &quot;96070A0D-32B1-4B8C-9353-FE3E6A5E6C1D&quot;,
-    &quot;ttl&quot;: 86400
+<pre>
+{
+   "appId": "34A9DDB9-D4AO-52AA-0ADE-EABEA521F2BA",
+   "endpointId": "bobsmith",
+   "roleId": "96070A0D-32B1-4B8C-9353-FE3E6A5E6C1D",
+   "ttl": 86400
 }
-</code></pre><p>Now all API calls made by the app that is authenticated as “bobsmith” will be tested against this role before being authorized.</p>
-</section>
+</pre>
+
+<p>Now all API calls made by the app that is authenticated as “bobsmith” will be tested against this role before being authorized.</p>
+<h3 id="pstn-permissions-phone-calls-">PSTN Permissions (Phone calls)</h3>
+<p>To be able to make phone calls out to the phone network from Respoke, you need to have enabled the <code>pstnOut</code> permission.</p>
+<p>By default, <code>pstnOut</code> is fully disabled unless you specify a pstnOut rule. It is also only available if your application is <strong>not</strong> in Development Mode.</p>
+<p>The <code>pstnOut</code> permission is just another key within your role and it’s a list of strings. Below is an example of allowing a role to call out to any allowed phone number on the PSTN.</p>
+<pre><code class="xml">POST http://api.respoke.io/v1/roles
+Content-Type: application/json
+App-Secret <b>OR</b> Admin-Token: 28B061B9-A0D4-4E52-A0ED-EB6EA125F82A
+</code></pre>
+
+<pre>
+{
+   "appId": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+   "name": "allowed-to-phone-out",
+   "mediaRelay": true,
+   "events": {
+       "subscribe": false,
+       "unsubscribe": false,
+   },
+   "groups": {
+       "list": true,
+       "*": {
+           "subscribe": false,
+           "unsubscribe": false,
+           "create": false,
+           "destroy": false,
+           "publish": false,
+           "getsubscribers": false
+       },
+    },
+    <b>pstnOut: ['*']</b>
+}
+</pre>
+
+<p>As PSTN calling is currently in beta there are some restrictions on what you can do within PSTN calling. One of the restrictions is that you cannot phone outside of the United States, what is referred to as US48.</p>
+<p>You can either allow your role to call any allowed number as above, or you can limit calls to certain numbers in the <code>e164</code> format. The below lets your role call San Jose and San Francisco’s Speaking Clocks only.</p>
+<pre><code>pstnOut: [&#39;+1408767267&#39;, &#39;+14157672676&#39;]
+</code></pre></section>
                       </article><br><br><br><br>
                     </div>
                   </div>

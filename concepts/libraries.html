@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-    <title>Example Apps - 
+    <title>Libraries - 
     </title>
     <meta name="keywords" content="">
     <meta name="keywords" content="">
@@ -57,22 +57,24 @@
                       <ul id="main-sidebar" class="nav affix">
                         <li>Respoke Concepts
                           <ul>
-                            <li><a href="/">Quickstart</a></li>
+                            <li ng-class="{ active: currentPage === '/' }"><a href="/">Quickstart</a></li>
                             <li ng-class="{ active: currentPage === ('/concepts/brokered-auth.html') }"><a href="/concepts/brokered-auth.html">Authentication</a></li>
                             <li ng-class="{ active: currentPage === ('/concepts/calling-to-and-from-a-phone.html') }"><a href="/concepts/calling-to-and-from-a-phone.html">Calling to and from a Phone</a></li>
                             <li ng-class="{ active: currentPage === ('/concepts/connecting-with-asterisk.html') }"><a href="/concepts/connecting-with-asterisk.html">Connecting with Asterisk</a></li>
-                            <li ng-class="{ active: currentPage === ('/concepts/direct-connection.html') }"><a href="/concepts/direct-connection.html">Direct Connections</a></li>
-                            <li ng-class="{ active: currentPage === ('/concepts/example-apps.html') }"><a href="/concepts/example-apps.html">Example Apps</a></li>
+                            <li ng-class="{ active: currentPage === ('/concepts/libraries.html') }"><a href="/concepts/libraries.html">Libraries</a></li>
                             <li ng-class="{ active: currentPage === ('/concepts/rest-api.html') }"><a href="/concepts/rest-api.html">REST API Routes</a></li>
                             <li ng-class="{ active: currentPage === ('/concepts/roles-and-permissions.html') }"><a href="/concepts/roles-and-permissions.html">Roles &amp; Permissions</a></li>
-                            <li ng-class="{ active: currentPage === ('/concepts/video-chat.html') }"><a href="/concepts/video-chat.html">Video Chat</a></li>
                           </ul>
                         </li>
-                        <li><a href="/changelog.html">Changelog</a></li>
+                        <li ng-class="{ active: currentPage === '/changelog.html' }"><a href="/changelog.html">Changelog</a></li>
+                        <li>&nbsp;</li>
                         <li>Javascript Client
                           <ul>
-                            <li ng-class="{ active: currentPage === ('/js-library/libraries.html') }"><a href="/js-library/libraries.html">Libraries</a></li>
+                            <li><a href="http://respoke.github.io/respoke" target="_blank">Reference&nbsp;<i class="glyphicon glyphicon-share"></i></a></li>
+                            <li ng-class="{ active: currentPage === ('/js-library/direct-connection.html') }"><a href="/js-library/direct-connection.html">Direct Connections</a></li>
+                            <li ng-class="{ active: currentPage === ('/js-library/example-apps.html') }"><a href="/js-library/example-apps.html">Example Apps</a></li>
                             <li ng-class="{ active: currentPage === ('/js-library/respoke-js-logs.html') }"><a href="/js-library/respoke-js-logs.html">Respoke.js Logs</a></li>
+                            <li ng-class="{ active: currentPage === ('/js-library/video-chat.html') }"><a href="/js-library/video-chat.html">Video Chat</a></li>
                           </ul>
                         </li>
                         <li>Admin API
@@ -87,21 +89,18 @@
                     <div class="content-wrap">
                       <button id="sidebar-toggle-button" onclick="$('#main-sidebar').toggle();$(this).find('i.glyphicon').toggleClass('hide');" class="btn btn xl btn-primary"><i class="glyphicon glyphicon-th-list"></i><i class="glyphicon glyphicon-remove hide"></i></button>
                       <article class="article">
-                        <section class="content"><h1 id="example-apps-built-with-respoke">Example Apps Built with Respoke</h1>
-<h3 id="for-the-browser">For the browser</h3>
-<p>A collection of examples using jQuery.
-(<a href="https://github.com/respoke/web-examples">source</a>)</p>
-<p>A simple <a href="http://jsbin.com/jipeg">audio chat and messaging</a> app using jQuery.
-(<a href="http://jsbin.com/jipeg/edit">source</a>)</p>
-<p>A barebones <a href="http://jsbin.com/huqij">video chat</a> example with jQuery.
-(<a href="http://jsbin.com/huqij/edit">source</a>)</p>
-<p>A barebones <a href="/tutorials/video-chat-example.html">video chat</a> example with Angular.
-(<a href="http://jsfiddle.net/ruffrey/Kfp47/">source</a>)</p>
-<p>A space themed <a href="http://sc.digiumlabs.com">messaging and group chat solution</a>,
-with audio and video calling.
-(<a href="https://github.com/respoke/subspace-communicator">source</a>)</p>
-<h3 id="for-the-server">For the server</h3>
-<p>Coming soon.</p>
+                        <section class="content"><h1 id="respoke-api-wrapper-libraries">Respoke API Wrapper Libraries</h1>
+<h2 id="browser-javascript-library">Browser JavaScript Library</h2>
+<ul>
+<li><a href="/js-library/respoke.html">Docs</a></li>
+</ul>
+<p><br /></p>
+<h2 id="node-js-admin-library">Node.js Admin Library</h2>
+<p><code>npm install --save respoke-admin</code></p>
+<ul>
+<li><a href="http://respoke.github.io/node-respoke-admin">Docs</a></li>
+<li><a href="https://github.com/respoke/node-respoke-admin">Source</a></li>
+</ul>
 </section>
                       </article><br><br><br><br>
                     </div>

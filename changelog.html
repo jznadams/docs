@@ -57,22 +57,24 @@
                       <ul id="main-sidebar" class="nav affix">
                         <li>Respoke Concepts
                           <ul>
-                            <li><a href="/">Quickstart</a></li>
+                            <li ng-class="{ active: currentPage === '/' }"><a href="/">Quickstart</a></li>
                             <li ng-class="{ active: currentPage === ('/concepts/brokered-auth.html') }"><a href="/concepts/brokered-auth.html">Authentication</a></li>
                             <li ng-class="{ active: currentPage === ('/concepts/calling-to-and-from-a-phone.html') }"><a href="/concepts/calling-to-and-from-a-phone.html">Calling to and from a Phone</a></li>
                             <li ng-class="{ active: currentPage === ('/concepts/connecting-with-asterisk.html') }"><a href="/concepts/connecting-with-asterisk.html">Connecting with Asterisk</a></li>
-                            <li ng-class="{ active: currentPage === ('/concepts/direct-connection.html') }"><a href="/concepts/direct-connection.html">Direct Connections</a></li>
-                            <li ng-class="{ active: currentPage === ('/concepts/example-apps.html') }"><a href="/concepts/example-apps.html">Example Apps</a></li>
+                            <li ng-class="{ active: currentPage === ('/concepts/libraries.html') }"><a href="/concepts/libraries.html">Libraries</a></li>
                             <li ng-class="{ active: currentPage === ('/concepts/rest-api.html') }"><a href="/concepts/rest-api.html">REST API Routes</a></li>
                             <li ng-class="{ active: currentPage === ('/concepts/roles-and-permissions.html') }"><a href="/concepts/roles-and-permissions.html">Roles &amp; Permissions</a></li>
-                            <li ng-class="{ active: currentPage === ('/concepts/video-chat.html') }"><a href="/concepts/video-chat.html">Video Chat</a></li>
                           </ul>
                         </li>
-                        <li><a href="/changelog.html">Changelog</a></li>
+                        <li ng-class="{ active: currentPage === '/changelog.html' }"><a href="/changelog.html">Changelog</a></li>
+                        <li>&nbsp;</li>
                         <li>Javascript Client
                           <ul>
-                            <li ng-class="{ active: currentPage === ('/js-library/libraries.html') }"><a href="/js-library/libraries.html">Libraries</a></li>
+                            <li><a href="http://respoke.github.io/respoke" target="_blank">Reference&nbsp;<i class="glyphicon glyphicon-share"></i></a></li>
+                            <li ng-class="{ active: currentPage === ('/js-library/direct-connection.html') }"><a href="/js-library/direct-connection.html">Direct Connections</a></li>
+                            <li ng-class="{ active: currentPage === ('/js-library/example-apps.html') }"><a href="/js-library/example-apps.html">Example Apps</a></li>
                             <li ng-class="{ active: currentPage === ('/js-library/respoke-js-logs.html') }"><a href="/js-library/respoke-js-logs.html">Respoke.js Logs</a></li>
+                            <li ng-class="{ active: currentPage === ('/js-library/video-chat.html') }"><a href="/js-library/video-chat.html">Video Chat</a></li>
                           </ul>
                         </li>
                         <li>Admin API
@@ -88,13 +90,16 @@
                       <button id="sidebar-toggle-button" onclick="$('#main-sidebar').toggle();$(this).find('i.glyphicon').toggleClass('hide');" class="btn btn xl btn-primary"><i class="glyphicon glyphicon-th-list"></i><i class="glyphicon glyphicon-remove hide"></i></button>
                       <article class="article">
                         <section class="content"><h1 id="changelog">Changelog</h1>
+<h2 id="2014-11-13">2014-11-13</h2>
+<p>The first version of a <strong><a href="https://github.com/respoke/node-respoke-admin">Node.js administration client</a></strong>
+has been released. It is open source under the MIT license.</p>
 <h2 id="2014-09-02">2014-09-02</h2>
 <p><strong>Analytics</strong> Or, as we affectionately call it here at Respoke Central,
 Babylitics. After your app gets some traffic, you’ll see maps and charts on your
 <a href="https://portal.respoke.io/">dashboard</a>, this includes US Usage, World Usage, a breakdown of User Agents,
 and a codecs breakdown. We are just getting started, so expect to see more
 analytics soon!</p>
-<p><img src="images/screenshot-browser-analytics.png" alt="Analytics screenshot"></p>
+<p><img src="/images/screenshot-browser-analytics.png" alt="Analytics screenshot"></p>
 </section>
                       </article><br><br><br><br>
                     </div>
