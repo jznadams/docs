@@ -1,137 +1,8 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="padd">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-    <title>Roles &amp; Permissions - 
-    </title>
-    <meta name="keywords" content="">
-    <meta name="keywords" content="">
-    <link rel="shortcut icon" type="image/ico" href="https://www.respoke.io/favicon.ico">
-    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Source+Code+Pro">
-    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-    <link type="text/css" rel="stylesheet" href="https://www.respoke.io/min/production.css">
-    <link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/docco.min.css">
-    <link type="text/css" rel="stylesheet" href="/css/site.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.min.js"></script>
-    <script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
-    <script src="/js/padd.js"></script>
-  </head>
-  <body data-spy="scroll" data-target=".secondary-nav">
-    <div id="wrap">
-      <div class="public-site">
-        <div ng-controller="NavController" class="topbar-wrapper opaque">
-          <div bfind-class-foo="@isexcited" class="navigation">
-            <div onclick="$(this).next().find('ul.nav-items').toggle()" class="nav-menu-button">
-              <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-              </ul>
-            </div>
-            <div class="nav-container"><a href="" class="www-link"><img src="https://www.respoke.io/images/logo_respoke.png" class="logo"></a>
-              <ul ng-show="menuVisibility !== false" class="nav-items">
-                <li><a href="/#howitworks" class="www-link">How it works</a></li>
-                <li><a href="/#pricing" class="www-link">Pricing</a></li>
-                <li><a href="/">Docs</a></li>
-                <li><a href="http://community.respoke.io">Community</a></li>
-                <li><a href="/#login" class="visible-xs log-in">log in</a></li>
-                <li><a href="javascript:void(0)" onclick="logout()" class="visible-xs log-out">log out</a></li>
-                <li><a href="/#sign-up-form" class="visible-xs sign-up">Sign Up</a></li>
-                <li><a href="" class="visible-xs portal">PORTAL</a></li>
-              </ul>
-              <div ng-show="menuVisibility !== false" class="buttons"><a href="/#login" class="log-in www-link">log in</a><a href="javascript:void(0)" onclick="logout()" class="log-out">log out</a><a href="/#sign-up-form" class="sign-up www-link">Sign Up</a><a href="" class="portal">PORTAL</a></div>
-            </div>
-          </div>
-        </div>
-        <!-- Main Page Content-->
-        <region>
-          <div ng-controller="NavController" class="how-it-works">
-            <div class="how-it-works-container">
-              <div id="content">
-                <div class="row">
-                  <div class="col-md-2">
-                    <div id="main-sidebar-wrap">
-                      <ul id="main-sidebar" class="nav affix">
-                        <li>Respoke Concepts
-                          <ul>
-                            <li ng-class="{ active: currentPage === '/' }"><a href="/">Quickstart</a></li>
-                            <li ng-class="{ active: currentPage === ('/concepts/brokered-auth.html') }"><a href="/concepts/brokered-auth.html">Authentication</a></li>
-                            <li ng-class="{ active: currentPage === ('/concepts/calling-to-and-from-a-phone.html') }"><a href="/concepts/calling-to-and-from-a-phone.html">Calling to and from a Phone</a></li>
-                            <li ng-class="{ active: currentPage === ('/concepts/connecting-with-asterisk.html') }"><a href="/concepts/connecting-with-asterisk.html">Connecting with Asterisk</a></li>
-                            <li ng-class="{ active: currentPage === ('/concepts/libraries.html') }"><a href="/concepts/libraries.html">Libraries</a></li>
-                            <li ng-class="{ active: currentPage === ('/concepts/rest-api.html') }"><a href="/concepts/rest-api.html">REST API Routes</a></li>
-                            <li ng-class="{ active: currentPage === ('/concepts/roles-and-permissions.html') }"><a href="/concepts/roles-and-permissions.html">Roles &amp; Permissions</a></li>
-                          </ul>
-                        </li>
-                        <li ng-class="{ active: currentPage === '/changelog.html' }"><a href="/changelog.html">Changelog</a></li>
-                        <li>&nbsp;</li>
-                        <li>Javascript Client
-                          <ul>
-                            <li><a href="http://respoke.github.io/respoke" target="_blank">Reference&nbsp;<i class="glyphicon glyphicon-share"></i></a></li>
-                            <li ng-class="{ active: currentPage === ('/js-library/direct-connection.html') }"><a href="/js-library/direct-connection.html">Direct Connections</a></li>
-                            <li ng-class="{ active: currentPage === ('/js-library/example-apps.html') }"><a href="/js-library/example-apps.html">Example Apps</a></li>
-                            <li ng-class="{ active: currentPage === ('/js-library/respoke-js-logs.html') }"><a href="/js-library/respoke-js-logs.html">Respoke.js Logs</a></li>
-                            <li ng-class="{ active: currentPage === ('/js-library/video-chat.html') }"><a href="/js-library/video-chat.html">Video Chat</a></li>
-                          </ul>
-                        </li>
-                        <li>Admin API
-                          <ul>
-                            <li>Coming soon</li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="col-md-7">
-                    <div class="content-wrap">
-                      <button id="sidebar-toggle-button" onclick="$('#main-sidebar').toggle();$(this).find('i.glyphicon').toggleClass('hide');" class="btn btn xl btn-primary"><i class="glyphicon glyphicon-th-list"></i><i class="glyphicon glyphicon-remove hide"></i></button>
-                      <article class="article">
-                        <section class="content"><h1 id="roles-and-permissions">Roles and Permissions</h1>
-<p>In <a href="/tutorials/brokered-auth.html">Brokered Authentication: Securing Your Application</a>, you learn how to secure your app by using tokens to create endpoints and authenticate your users to Respoke.</p>
-<p>To secure your app even further, you can use roles to limit the types of things authenticated users can do.</p>
-<h2 id="about-roles-and-permissions">About Roles and Permissions</h2>
-<p>As your Respoke app grows, you may want your users to have permission to perform only specific actions against Respoke. In this section, you will learn how to <strong>create Roles for your users and assign them to an endpoint</strong> when authentication occurs.</p>
-<h3 id="concepts">Concepts</h3>
-<p><strong>Permissions</strong> live in Respoke and <strong>granularly govern what user may or may not do</strong>, in Respoke.</p>
-<p><strong>Permissions</strong> are granted by your application on a <strong>per-token</strong> basis.</p>
-<p><strong>Roles provide a way to group permissions</strong>. They are created by you via your <a href="https://portal.respoke.io/">dev console</a> or REST API.</p>
-<h3 id="regarding-dev-mode">Regarding Dev Mode</h3>
-<p>It’s only a few lines of code to get started developing with Respoke in development mode. If you have successfully logged an endpoint into Respoke and sent a message, you’re probably already using development mode. The <a href="/">Respoke Quickstart Guide</a> details how to place your Respoke app in development mode, connect, and send messages.</p>
-<p>In development mode Respoke automatically assigns your endpoints a default role. This system role includes a wide set of permissions which make app setup and testing easy.</p>
-<p>The <strong>development mode role</strong> consists of the following permissions:</p>
-<ul>
-<li>ability to list all groups that have been created</li>
-<li>ability to join, leave, create, destroy, and publish to a group</li>
-<li>ability to list the members of all groups</li>
-</ul>
-<p><br />
-<strong>It’s undesirable to run your app in development mode all the time.</strong> As your app matures, you’ll want to use roles to limit what your app can do depending on what type of user is authenticated as an endpoint. If you like, you can keep it simple and use a single role for many endpoints, but at least force users to authenticate to your server before letting them connect to Respoke.</p>
-<h3 id="how-to-create-custom-roles">How To Create Custom Roles</h3>
-<p>The real power in Roles comes from how you customize them to fit your needs.</p>
-<ol>
-<li>Select the app you’d like this role to be associated with.</li>
-<li>Custom roles require that your app is using <a href="/tutorials/brokered-auth.html">brokered auth</a>, so you may have to put your app out of development mode. Head over to your <a href="https://portal.respoke.io/">dev console</a> to do that.</li>
-<li>Create a new role. Give it a unique name, like “general web visitors”.</li>
-<li>Set some permissions.<ul>
-<li>toggle the ability to media relay services (so audio and video calls work in more complex network scenarios)</li>
-<li>allow subscribing and unsubscribing from app administrative events</li>
-<li>allow specific actions to be performed on groups of specific names</li>
-<li>allow calling to regular telephone numbers by specifying a list of numbers in the form “+15558675309”. Use “*” in the list to allow calling to all numbers.</li>
-</ul>
-</li>
-</ol>
-<p><em>Configuring App Administrative Events</em></p>
-<p>Leaving this section blank will result in attempts to subscribe or unsubscribe to app events being refused.</p>
-<pre><code>{
+<!DOCTYPE html><html lang=en ng-app=padd><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"><title>Roles &amp; Permissions -</title><meta name=keywords><meta name=keywords><link rel="shortcut icon" type=image/ico href=https://www.respoke.io/favicon.ico><link type=text/css rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Source+Code+Pro"><link rel=stylesheet type=text/css href=https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css><link rel=stylesheet type=text/css href=https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css><link type=text/css rel=stylesheet href=https://www.respoke.io/min/production.css><link rel=stylesheet href=https://yandex.st/highlightjs/8.0/styles/docco.min.css><link type=text/css rel=stylesheet href=/css/site.css><script src=https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.min.js></script><script src=https://yandex.st/highlightjs/8.0/highlight.min.js></script><script src=/js/padd.js></script></head><body data-spy=scroll data-target=.secondary-nav><div id=wrap><div class=public-site><div ng-controller=NavController class="topbar-wrapper opaque"><div bfind-class-foo=@isexcited class=navigation><div onclick="$(this).next().find('ul.nav-items').toggle()" class=nav-menu-button><ul><li></li><li></li><li></li></ul></div><div class=nav-container><a class=www-link><img src=https://www.respoke.io/images/logo_respoke.png class=logo></a><ul ng-show="menuVisibility !== false" class=nav-items><li><a href=/#howitworks class=www-link>How it works</a></li><li><a href=/#pricing class=www-link>Pricing</a></li><li><a href="/">Docs</a></li><li><a href=http://community.respoke.io>Community</a></li><li><a href=/#login class="visible-xs log-in">log in</a></li><li><a href=javascript:void(0) onclick=logout() class="visible-xs log-out">log out</a></li><li><a href=/#sign-up-form class="visible-xs sign-up">Sign Up</a></li><li><a class="visible-xs portal">PORTAL</a></li></ul><div ng-show="menuVisibility !== false" class=buttons><a href=/#login class="log-in www-link">log in</a><a href=javascript:void(0) onclick=logout() class=log-out>log out</a><a href=/#sign-up-form class="sign-up www-link">Sign Up</a><a class=portal>PORTAL</a></div></div></div></div><region><div ng-controller=NavController class=how-it-works><div class=how-it-works-container><div id=content><div class=row><div class=col-md-2><div id=main-sidebar-wrap><ul id=main-sidebar class="nav affix"><li>Respoke Concepts<ul><li ng-class="{ active: currentPage === '/' }"><a href="/">Quickstart</a></li><li ng-class="{ active: currentPage === ('/concepts/brokered-auth.html') }"><a href=/concepts/brokered-auth.html>Authentication</a></li><li ng-class="{ active: currentPage === ('/concepts/calling-to-and-from-a-phone.html') }"><a href=/concepts/calling-to-and-from-a-phone.html>Calling to and from a Phone</a></li><li ng-class="{ active: currentPage === ('/concepts/connecting-with-asterisk.html') }"><a href=/concepts/connecting-with-asterisk.html>Connecting with Asterisk</a></li><li ng-class="{ active: currentPage === ('/concepts/libraries.html') }"><a href=/concepts/libraries.html>Libraries</a></li><li ng-class="{ active: currentPage === ('/concepts/rest-api.html') }"><a href=/concepts/rest-api.html>REST API Routes</a></li><li ng-class="{ active: currentPage === ('/concepts/roles-and-permissions.html') }"><a href=/concepts/roles-and-permissions.html>Roles &amp; Permissions</a></li></ul></li><li ng-class="{ active: currentPage === '/changelog.html' }"><a href=/changelog.html>Changelog</a></li><li>&nbsp;</li><li>Javascript Client<ul><li><a href=http://respoke.github.io/respoke target=_blank>Reference&nbsp;<i class="glyphicon glyphicon-share"></i></a></li><li ng-class="{ active: currentPage === ('/js-library/direct-connection.html') }"><a href=/js-library/direct-connection.html>Direct Connections</a></li><li ng-class="{ active: currentPage === ('/js-library/example-apps.html') }"><a href=/js-library/example-apps.html>Example Apps</a></li><li ng-class="{ active: currentPage === ('/js-library/respoke-js-logs.html') }"><a href=/js-library/respoke-js-logs.html>Respoke.js Logs</a></li><li ng-class="{ active: currentPage === ('/js-library/video-chat.html') }"><a href=/js-library/video-chat.html>Video Chat</a></li></ul></li><li>Admin API<ul><li>Coming soon</li></ul></li></ul></div></div><div class=col-md-7><div class=content-wrap><button id=sidebar-toggle-button onclick="$('#main-sidebar').toggle();$(this).find('i.glyphicon').toggleClass('hide');" class="btn btn xl btn-primary"><i class="glyphicon glyphicon-th-list"></i><i class="glyphicon glyphicon-remove hide"></i></button><article class=article><section class=content><h1 id=roles-and-permissions>Roles and Permissions</h1><p>In <a href=/tutorials/brokered-auth.html>Brokered Authentication: Securing Your Application</a>, you learn how to secure your app by using tokens to create endpoints and authenticate your users to Respoke.</p><p>To secure your app even further, you can use roles to limit the types of things authenticated users can do.</p><h2 id=about-roles-and-permissions>About Roles and Permissions</h2><p>As your Respoke app grows, you may want your users to have permission to perform only specific actions against Respoke. In this section, you will learn how to <strong>create Roles for your users and assign them to an endpoint</strong> when authentication occurs.</p><h3 id=concepts>Concepts</h3><p><strong>Permissions</strong> live in Respoke and <strong>granularly govern what user may or may not do</strong>, in Respoke.</p><p><strong>Permissions</strong> are granted by your application on a <strong>per-token</strong> basis.</p><p><strong>Roles provide a way to group permissions</strong>. They are created by you via your <a href="https://portal.respoke.io/">dev console</a> or REST API.</p><h3 id=regarding-dev-mode>Regarding Dev Mode</h3><p>It’s only a few lines of code to get started developing with Respoke in development mode. If you have successfully logged an endpoint into Respoke and sent a message, you’re probably already using development mode. The <a href="/">Respoke Quickstart Guide</a> details how to place your Respoke app in development mode, connect, and send messages.</p><p>In development mode Respoke automatically assigns your endpoints a default role. This system role includes a wide set of permissions which make app setup and testing easy.</p><p>The <strong>development mode role</strong> consists of the following permissions:</p><ul><li>ability to list all groups that have been created</li><li>ability to join, leave, create, destroy, and publish to a group</li><li>ability to list the members of all groups</li></ul><p><br><strong>It’s undesirable to run your app in development mode all the time.</strong> As your app matures, you’ll want to use roles to limit what your app can do depending on what type of user is authenticated as an endpoint. If you like, you can keep it simple and use a single role for many endpoints, but at least force users to authenticate to your server before letting them connect to Respoke.</p><h3 id=how-to-create-custom-roles>How To Create Custom Roles</h3><p>The real power in Roles comes from how you customize them to fit your needs.</p><ol><li>Select the app you’d like this role to be associated with.</li><li>Custom roles require that your app is using <a href=/tutorials/brokered-auth.html>brokered auth</a>, so you may have to put your app out of development mode. Head over to your <a href="https://portal.respoke.io/">dev console</a> to do that.</li><li>Create a new role. Give it a unique name, like “general web visitors”.</li><li>Set some permissions.<ul><li>toggle the ability to media relay services (so audio and video calls work in more complex network scenarios)</li><li>allow subscribing and unsubscribing from app administrative events</li><li>allow specific actions to be performed on groups of specific names</li><li>allow calling to regular telephone numbers by specifying a list of numbers in the form “+15558675309”. Use “*” in the list to allow calling to all numbers.</li></ul></li></ol><p><em>Configuring App Administrative Events</em></p><p>Leaving this section blank will result in attempts to subscribe or unsubscribe to app events being refused.</p><pre><code>{
     &quot;subscribe&quot;: false,
     &quot;unsubscribe&quot;: false,
 }
-</code></pre><p><em>Configuring Groups Permissions</em></p>
-<p>Leaving this section blank will result in attempts to perform any of these actions on groups of any name being refused. For more information on how to construct these configurations, read on to the next section.</p>
-<pre><code>{
+</code></pre><p><em>Configuring Groups Permissions</em></p><p>Leaving this section blank will result in attempts to perform any of these actions on groups of any name being refused. For more information on how to construct these configurations, read on to the next section.</p><pre><code>{
     &quot;list&quot;: true,
     &quot;myGroupName&quot;: {
         &quot;subscribe&quot;: false,
@@ -142,30 +13,9 @@
         &quot;getsubscribers&quot;: false
     }
 }
-</code></pre><p><br /></p>
-<h3 id="how-to-construct-permissions-on-a-group">How To Construct Permissions on a Group</h3>
-<p>Group permissions match a group’s name against a permissions rule. You can create a rule with the exact name of the group, with a prefix and a wildcard, or with only a wildcard to match all group names. Respoke will take the most specific rule it can find based on the group’s name and use that set of permissions.</p>
-<p><em>Example</em></p>
-<p>Assume you have the following group rules:</p>
-<ul>
-<li><code>*</code></li>
-<li><code>admin</code></li>
-<li><code>buddylistroom*</code></li>
-<li><code>buddylistcontrol</code></li>
-</ul>
-<p><br />
-Your app sends a request for an endpoint using these rules to join the group <code>buddylistroom5</code>. Respoke will match that group name against the <code>buddylistroom*</code> rule and use the permissions attached to that rule to authorize the endpoint to join the group. If the app sends a request for an endpoint using these rules to join the group <code>testgroup</code>, Respoke will match on the wildcard rule <code>*</code> and use those permissions to determine if the endpoint is allowed to join.</p>
-<p>Respoke uses the longest match paradigm, so for rules like <code>buddy*</code>, <code>buddylist*</code>, and <code>buddylistroom*</code>, a request to join <code>buddylistroom1</code> will only match the <code>buddylistroom*</code> rule.</p>
-<p><br /></p>
-<h2 id="create-roles-programmatically-with-respoke-s-rest-api">Create Roles Programmatically with Respoke’s REST API</h2>
-<p>Eventually, you may need to create roles programmatically. You can do this with <a href="/reference/rest-api.html">Respoke’s REST API</a> using an App Secret or Admin-Token header.</p>
-<p>Here’s an example of how you could recreate the development mode role as a proper role.</p>
-<pre><code class="xml">POST http://api.respoke.io/v1/roles
+</code></pre><p><br></p><h3 id=how-to-construct-permissions-on-a-group>How To Construct Permissions on a Group</h3><p>Group permissions match a group’s name against a permissions rule. You can create a rule with the exact name of the group, with a prefix and a wildcard, or with only a wildcard to match all group names. Respoke will take the most specific rule it can find based on the group’s name and use that set of permissions.</p><p><em>Example</em></p><p>Assume you have the following group rules:</p><ul><li><code>*</code></li><li><code>admin</code></li><li><code>buddylistroom*</code></li><li><code>buddylistcontrol</code></li></ul><p><br>Your app sends a request for an endpoint using these rules to join the group <code>buddylistroom5</code>. Respoke will match that group name against the <code>buddylistroom*</code> rule and use the permissions attached to that rule to authorize the endpoint to join the group. If the app sends a request for an endpoint using these rules to join the group <code>testgroup</code>, Respoke will match on the wildcard rule <code>*</code> and use those permissions to determine if the endpoint is allowed to join.</p><p>Respoke uses the longest match paradigm, so for rules like <code>buddy*</code>, <code>buddylist*</code>, and <code>buddylistroom*</code>, a request to join <code>buddylistroom1</code> will only match the <code>buddylistroom*</code> rule.</p><p><br></p><h2 id=create-roles-programmatically-with-respoke-s-rest-api>Create Roles Programmatically with Respoke’s REST API</h2><p>Eventually, you may need to create roles programmatically. You can do this with <a href=/reference/rest-api.html>Respoke’s REST API</a> using an App Secret or Admin-Token header.</p><p>Here’s an example of how you could recreate the development mode role as a proper role.</p><pre><code class=xml>POST http://api.respoke.io/v1/roles
 Content-Type: application/json
-App-Secret <b>OR</b> Admin-Token: 28B061B9-A0D4-4E52-A0ED-EB6EA125F82A</code></pre>
-
-
-<pre><code>{
+App-Secret <b>OR</b> Admin-Token: 28B061B9-A0D4-4E52-A0ED-EB6EA125F82A</code></pre><pre><code>{
     &quot;appId&quot;: &quot;XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX&quot;,
     &quot;name&quot;: &quot;development-mode&quot;,
     &quot;mediaRelay&quot;: false,
@@ -185,12 +35,9 @@ App-Secret <b>OR</b> Admin-Token: 28B061B9-A0D4-4E52-A0ED-EB6EA125F82A</code></p
         }
     }
 }
-</code></pre><p>Here’s how you could recreate the role listed above in the Create Custom Roles section.</p>
-<pre><code class="xml">POST http://api.respoke.io/v1/roles
+</code></pre><p>Here’s how you could recreate the role listed above in the Create Custom Roles section.</p><pre><code class=xml>POST http://api.respoke.io/v1/roles
 Content-Type: application/json
-App-Secret <b>OR</b> Admin-Token: 28B061B9-A0D4-4E52-A0ED-EB6EA125F82A</code></pre>
-
-<pre><code>{
+App-Secret <b>OR</b> Admin-Token: 28B061B9-A0D4-4E52-A0ED-EB6EA125F82A</code></pre><pre><code>{
     &quot;appId&quot;: &quot;XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX&quot;,
     &quot;name&quot;: &quot;general-visitor&quot;,
     &quot;mediaRelay&quot;: true,
@@ -234,33 +81,20 @@ App-Secret <b>OR</b> Admin-Token: 28B061B9-A0D4-4E52-A0ED-EB6EA125F82A</code></p
         }
     }
 }
-</code></pre><p>Both of these API calls will return the same role you’ve just sent with the addition of a unique identifier named <code>id</code> that you’ll need to pass into the request you’ll use to make tokens for your endpoints in brokered authentication.</p>
-<p>Now that you have a few custom roles, all you need to do is start creating tokens that use them. As the <a href="/tutorials/brokered-auth.html">Brokered Authentication</a> article says, this is done inside your server-side auth broker app with the <code>id</code> (named <code>roleId</code>) that each role you created was assigned.</p>
-<pre><code class="xml">POST https://api.respoke.io/v1/tokens
+</code></pre><p>Both of these API calls will return the same role you’ve just sent with the addition of a unique identifier named <code>id</code> that you’ll need to pass into the request you’ll use to make tokens for your endpoints in brokered authentication.</p><p>Now that you have a few custom roles, all you need to do is start creating tokens that use them. As the <a href=/tutorials/brokered-auth.html>Brokered Authentication</a> article says, this is done inside your server-side auth broker app with the <code>id</code> (named <code>roleId</code>) that each role you created was assigned.</p><pre><code class=xml>POST https://api.respoke.io/v1/tokens
 Content-Type: application/json
 App-Secret: 28B061B9-A0D4-4E52-A0ED-EB6EA125F82A
-</code></pre>
-
-<pre>
+</code></pre><pre>
 {
    "appId": "34A9DDB9-D4AO-52AA-0ADE-EABEA521F2BA",
    "endpointId": "bobsmith",
    "roleId": "96070A0D-32B1-4B8C-9353-FE3E6A5E6C1D",
    "ttl": 86400
 }
-</pre>
-
-<p>Now all API calls made by the app that is authenticated as “bobsmith” will be tested against this role before being authorized.</p>
-<h3 id="pstn-permissions-phone-calls-">PSTN Permissions (Phone calls)</h3>
-<p>To be able to make phone calls out to the phone network from Respoke, you need to have enabled the <code>pstnOut</code> permission.</p>
-<p>By default, <code>pstnOut</code> is fully disabled unless you specify a pstnOut rule. It is also only available if your application is <strong>not</strong> in Development Mode.</p>
-<p>The <code>pstnOut</code> permission is just another key within your role and it’s a list of strings. Below is an example of allowing a role to call out to any allowed phone number on the PSTN.</p>
-<pre><code class="xml">POST http://api.respoke.io/v1/roles
+</pre><p>Now all API calls made by the app that is authenticated as “bobsmith” will be tested against this role before being authorized.</p><h3 id=pstn-permissions-phone-calls->PSTN Permissions (Phone calls)</h3><p>To be able to make phone calls out to the phone network from Respoke, you need to have enabled the <code>pstnOut</code> permission.</p><p>By default, <code>pstnOut</code> is fully disabled unless you specify a pstnOut rule. It is also only available if your application is <strong>not</strong> in Development Mode.</p><p>The <code>pstnOut</code> permission is just another key within your role and it’s a list of strings. Below is an example of allowing a role to call out to any allowed phone number on the PSTN.</p><pre><code class=xml>POST http://api.respoke.io/v1/roles
 Content-Type: application/json
 App-Secret <b>OR</b> Admin-Token: 28B061B9-A0D4-4E52-A0ED-EB6EA125F82A
-</code></pre>
-
-<pre>
+</code></pre><pre>
 {
    "appId": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
    "name": "allowed-to-phone-out",
@@ -282,137 +116,93 @@ App-Secret <b>OR</b> Admin-Token: 28B061B9-A0D4-4E52-A0ED-EB6EA125F82A
     },
     <b>pstnOut: ['*']</b>
 }
-</pre>
+</pre><p>As PSTN calling is currently in beta there are some restrictions on what you can do within PSTN calling. One of the restrictions is that you cannot phone outside of the United States, what is referred to as US48.</p><p>You can either allow your role to call any allowed number as above, or you can limit calls to certain numbers in the <code>e164</code> format. The below lets your role call San Jose and San Francisco’s Speaking Clocks only.</p><pre><code>pstnOut: [&#39;+1408767267&#39;, &#39;+14157672676&#39;]
+</code></pre></section></article><br><br><br><br></div></div><div class=col-md-3></div></div></div></div></div></region></div><region><footer><div class=content-wrap><section class=copy><div class=footer><div class=footer-container><div class=footer-links><a href=http://digium.com/respoke><img src=/images/digium_white.png class=digium-logo></a></div><div class=footer-content><p class=copy>Copyright &copy; 2014 D.C.S, LLC</p><p class=copy><a href=mailto:info@respoke.io>info@respoke.io</a></p></div><div class="footer-links social-links"><a href=https://twitter.com/respoke><span class="fa fa-twitter"></span></a><a href=https://www.facebook.com/respokeIO><span class="fa fa-facebook"></span></a><a href=https://plus.google.com/110089434291590810767 rel=publisher><span class="fa fa-google-plus"></span></a></div></div></div></section></div></footer></region></div></body></html><script src=https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js></script><script src=https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/stellar.js/0.6.2/jquery.stellar.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js></script><script>// Scrollspy
+// TODO: use angular-ui boostrap version instead
+$('body').scrollspy({ target: '.secondary-nav', offset: 150 });
 
-<p>As PSTN calling is currently in beta there are some restrictions on what you can do within PSTN calling. One of the restrictions is that you cannot phone outside of the United States, what is referred to as US48.</p>
-<p>You can either allow your role to call any allowed number as above, or you can limit calls to certain numbers in the <code>e164</code> format. The below lets your role call San Jose and San Francisco’s Speaking Clocks only.</p>
-<pre><code>pstnOut: [&#39;+1408767267&#39;, &#39;+14157672676&#39;]
-</code></pre></section>
-                      </article><br><br><br><br>
-                    </div>
-                  </div>
-                  <div class="col-md-3">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </region>
-      </div>
-      <!-- Footer-->
-      <region>
-        <footer>
-          <div class="content-wrap">
-            <section class="copy">
-              <div class="footer">
-                <div class="footer-container">
-                  <div class="footer-links"><a href="http://digium.com/respoke"><img src="/images/digium_white.png" class="digium-logo"></a></div>
-                  <div class="footer-content">
-                    <p class="copy">Copyright &copy; 2014 D.C.S, LLC</p>
-                    <p class="copy"><a href="mailto:info@respoke.io">info@respoke.io</a></p>
-                  </div>
-                  <div class="footer-links social-links"><a href="https://twitter.com/respoke"><span class="fa fa-twitter"></span></a><a href="https://www.facebook.com/respokeIO"><span class="fa fa-facebook"></span></a><a href="https://plus.google.com/110089434291590810767" rel="publisher"><span class="fa fa-google-plus"></span></a></div>
-                </div>
-              </div>
-            </section>
-          </div>
-        </footer>
-      </region>
-    </div>
-  </body>
-</html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/stellar.js/0.6.2/jquery.stellar.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-<script>
-  // Scrollspy
-  // TODO: use angular-ui boostrap version instead
-  $('body').scrollspy({ target: '.secondary-nav', offset: 150 });
-  
-  // parallax by http://markdalgleish.com/projects/stellar.js/
-  $.stellar();
-  
-  // affixing the sidebar at high resolutions
-  var resizeEvent = function(event){
-    if($(window).width() > 990) {
-        affixLeftSidebar();
-    }
-  };
-  window.addEventListener('resize', resizeEvent);
-  resizeEvent();
-  
-  // Showing and login and signup
-  (function () {
-      var token = $.cookie('token');
-      var $login = $('.log-in');
-      var $logout = $('.log-out');
-      var $signup = $('.sign-up');
-      var $portal = $('.portal');
-      var $wwwlink = $('.www-link');
-      var $logo = $('img.logo');
-  
-      function loggedIn() {
-          $login.remove();
-          $signup.remove();
-  
-          $portal.css('display', 'inline-block');
-          $logout.css('display', 'inline-block');
-      }
-      function notLoggedIn() {
-          $portal.remove();
-          $logout.remove();
-  
-          //- $login.css('display', 'inline-block');
-          //- $signup.css('display', 'inline-block');
-      }
-  
-      var apiBase = window.location.host.replace('docs', 'api').replace(':2003', ':2000');
-      var apiUrl = apiBase.indexOf('testing.digiumlabs.com') !== -1 ? 'http://' : 'https://';
-      apiUrl += apiBase + '/v1/admins/me';
-      var publicBase = window.location.host.replace('docs', 'www').replace(':2003', ':2001');
-      var publicUrl = publicBase.indexOf('testing.digiumlabs.com') !== -1 ? 'http://' : 'https://';
-      publicUrl += publicBase;
-      var portalBase = window.location.host.replace('docs', 'portal').replace(':2003', ':2002');
-      var portalUrl = portalBase.indexOf('testing.digiumlabs.com') !== -1 ? 'http://' : 'https://';
-      portalUrl += portalBase;
-  
-      if (token) {
-          $.ajax({
-              url: apiUrl,
-              type: 'GET',
-              headers: {
-                  'Admin-Token': token
-              },
-              success: loggedIn,
-              error: notLoggedIn
-          });
-      }
-      else {
-          notLoggedIn();
-      }
-  
-      $portal.attr('href', portalUrl + $portal.attr('href'));
-      $wwwlink.each(function () {
-          $(this).attr('href', publicUrl + $(this).attr('href'))
-      });
-      $logo.attr('src', publicUrl + $logo.attr('src').replace('https://www.respoke.io',''));
-  })();
-  
-  function logout() {
-      $.removeCookie('token', { domain: '.' + window.location.hostname.split('.').slice(-2).join('.') });
-      window.location.reload();
+// parallax by http://markdalgleish.com/projects/stellar.js/
+$.stellar();
+
+// affixing the sidebar at high resolutions
+var resizeEvent = function(event){
+  if($(window).width() > 990) {
+      affixLeftSidebar();
   }
-  
-  $.ajax({
-        url: '//d3px1qgagsf6ei.cloudfront.net/Scripts/f772acdb-7c45-430c-8c5a-28c3bcbb420e',
-        crossDomain: true,
-        dataType: 'script',
-        success: function () {
-            Payboard.Events.trackPage;
-        },
-        error: function () {
-            console.log("There was an error retrieving the payboard tracking script");
-        }
+};
+window.addEventListener('resize', resizeEvent);
+resizeEvent();
+
+// Showing and login and signup
+(function () {
+    var token = $.cookie('token');
+    var $login = $('.log-in');
+    var $logout = $('.log-out');
+    var $signup = $('.sign-up');
+    var $portal = $('.portal');
+    var $wwwlink = $('.www-link');
+    var $logo = $('img.logo');
+
+    function loggedIn() {
+        $login.remove();
+        $signup.remove();
+
+        $portal.css('display', 'inline-block');
+        $logout.css('display', 'inline-block');
+    }
+    function notLoggedIn() {
+        $portal.remove();
+        $logout.remove();
+
+        //- $login.css('display', 'inline-block');
+        //- $signup.css('display', 'inline-block');
+    }
+
+    var apiBase = window.location.host.replace('docs', 'api').replace(':2003', ':2000');
+    var apiUrl = apiBase.indexOf('testing.digiumlabs.com') !== -1 ? 'http://' : 'https://';
+    apiUrl += apiBase + '/v1/admins/me';
+    var publicBase = window.location.host.replace('docs', 'www').replace(':2003', ':2001');
+    var publicUrl = publicBase.indexOf('testing.digiumlabs.com') !== -1 ? 'http://' : 'https://';
+    publicUrl += publicBase;
+    var portalBase = window.location.host.replace('docs', 'portal').replace(':2003', ':2002');
+    var portalUrl = portalBase.indexOf('testing.digiumlabs.com') !== -1 ? 'http://' : 'https://';
+    portalUrl += portalBase;
+
+    if (token) {
+        $.ajax({
+            url: apiUrl,
+            type: 'GET',
+            headers: {
+                'Admin-Token': token
+            },
+            success: loggedIn,
+            error: notLoggedIn
+        });
+    }
+    else {
+        notLoggedIn();
+    }
+
+    $portal.attr('href', portalUrl + $portal.attr('href'));
+    $wwwlink.each(function () {
+        $(this).attr('href', publicUrl + $(this).attr('href'))
     });
-</script>
+    $logo.attr('src', publicUrl + $logo.attr('src').replace('https://www.respoke.io',''));
+})();
+
+function logout() {
+    $.removeCookie('token', { domain: '.' + window.location.hostname.split('.').slice(-2).join('.') });
+    window.location.reload();
+}
+
+$.ajax({
+      url: '//d3px1qgagsf6ei.cloudfront.net/Scripts/f772acdb-7c45-430c-8c5a-28c3bcbb420e',
+      crossDomain: true,
+      dataType: 'script',
+      success: function () {
+          Payboard.Events.trackPage;
+      },
+      error: function () {
+          console.log("There was an error retrieving the payboard tracking script");
+      }
+  });</script>

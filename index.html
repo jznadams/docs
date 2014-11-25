@@ -1,111 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="padd">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-    <title>Quickstart - 
-    </title>
-    <meta name="keywords" content="">
-    <meta name="keywords" content="">
-    <link rel="shortcut icon" type="image/ico" href="https://www.respoke.io/favicon.ico">
-    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Source+Code+Pro">
-    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-    <link type="text/css" rel="stylesheet" href="https://www.respoke.io/min/production.css">
-    <link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/docco.min.css">
-    <link type="text/css" rel="stylesheet" href="/css/site.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.min.js"></script>
-    <script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
-    <script src="/js/padd.js"></script>
-  </head>
-  <body data-spy="scroll" data-target=".secondary-nav">
-    <div id="wrap">
-      <div class="public-site">
-        <div ng-controller="NavController" class="topbar-wrapper opaque">
-          <div bfind-class-foo="@isexcited" class="navigation">
-            <div onclick="$(this).next().find('ul.nav-items').toggle()" class="nav-menu-button">
-              <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-              </ul>
-            </div>
-            <div class="nav-container"><a href="" class="www-link"><img src="https://www.respoke.io/images/logo_respoke.png" class="logo"></a>
-              <ul ng-show="menuVisibility !== false" class="nav-items">
-                <li><a href="/#howitworks" class="www-link">How it works</a></li>
-                <li><a href="/#pricing" class="www-link">Pricing</a></li>
-                <li><a href="/">Docs</a></li>
-                <li><a href="http://community.respoke.io">Community</a></li>
-                <li><a href="/#login" class="visible-xs log-in">log in</a></li>
-                <li><a href="javascript:void(0)" onclick="logout()" class="visible-xs log-out">log out</a></li>
-                <li><a href="/#sign-up-form" class="visible-xs sign-up">Sign Up</a></li>
-                <li><a href="" class="visible-xs portal">PORTAL</a></li>
-              </ul>
-              <div ng-show="menuVisibility !== false" class="buttons"><a href="/#login" class="log-in www-link">log in</a><a href="javascript:void(0)" onclick="logout()" class="log-out">log out</a><a href="/#sign-up-form" class="sign-up www-link">Sign Up</a><a href="" class="portal">PORTAL</a></div>
-            </div>
-          </div>
-        </div>
-        <!-- Main Page Content-->
-        <region>
-          <div ng-controller="NavController" class="how-it-works">
-            <div class="how-it-works-container">
-              <div id="content">
-                <div class="row">
-                  <div class="col-md-2">
-                    <div id="main-sidebar-wrap">
-                      <ul id="main-sidebar" class="nav affix">
-                        <li>Respoke Concepts
-                          <ul>
-                            <li ng-class="{ active: currentPage === '/' }"><a href="/">Quickstart</a></li>
-                            <li ng-class="{ active: currentPage === ('/concepts/brokered-auth.html') }"><a href="/concepts/brokered-auth.html">Authentication</a></li>
-                            <li ng-class="{ active: currentPage === ('/concepts/calling-to-and-from-a-phone.html') }"><a href="/concepts/calling-to-and-from-a-phone.html">Calling to and from a Phone</a></li>
-                            <li ng-class="{ active: currentPage === ('/concepts/connecting-with-asterisk.html') }"><a href="/concepts/connecting-with-asterisk.html">Connecting with Asterisk</a></li>
-                            <li ng-class="{ active: currentPage === ('/concepts/libraries.html') }"><a href="/concepts/libraries.html">Libraries</a></li>
-                            <li ng-class="{ active: currentPage === ('/concepts/rest-api.html') }"><a href="/concepts/rest-api.html">REST API Routes</a></li>
-                            <li ng-class="{ active: currentPage === ('/concepts/roles-and-permissions.html') }"><a href="/concepts/roles-and-permissions.html">Roles &amp; Permissions</a></li>
-                          </ul>
-                        </li>
-                        <li ng-class="{ active: currentPage === '/changelog.html' }"><a href="/changelog.html">Changelog</a></li>
-                        <li>&nbsp;</li>
-                        <li>Javascript Client
-                          <ul>
-                            <li><a href="http://respoke.github.io/respoke" target="_blank">Reference&nbsp;<i class="glyphicon glyphicon-share"></i></a></li>
-                            <li ng-class="{ active: currentPage === ('/js-library/direct-connection.html') }"><a href="/js-library/direct-connection.html">Direct Connections</a></li>
-                            <li ng-class="{ active: currentPage === ('/js-library/example-apps.html') }"><a href="/js-library/example-apps.html">Example Apps</a></li>
-                            <li ng-class="{ active: currentPage === ('/js-library/respoke-js-logs.html') }"><a href="/js-library/respoke-js-logs.html">Respoke.js Logs</a></li>
-                            <li ng-class="{ active: currentPage === ('/js-library/video-chat.html') }"><a href="/js-library/video-chat.html">Video Chat</a></li>
-                          </ul>
-                        </li>
-                        <li>Admin API
-                          <ul>
-                            <li>Coming soon</li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="col-md-7">
-                    <div class="content-wrap">
-                      <button id="sidebar-toggle-button" onclick="$('#main-sidebar').toggle();$(this).find('i.glyphicon').toggleClass('hide');" class="btn btn xl btn-primary"><i class="glyphicon glyphicon-th-list"></i><i class="glyphicon glyphicon-remove hide"></i></button>
-                      <article class="article">
-                        <section class="content"><h1 id="respoke-quickstart">Respoke Quickstart</h1>
-<p>Welcome to Respoke. This quick guide should help you build a <strong>messaging and audio calling app</strong> in about 10 minutes. This tutorial uses development mode for ease of development, but all apps should be converted to using <a href="/tutorials/brokered-auth.html">brokered authentication</a> before being published.</p>
-<h3 id="step-1-create-a-respoke-account">Step 1: Create a Respoke Account</h3>
-<p>Go to the <a href="https://www.respoke.io">Respoke.io website</a> and sign up. It’s free.</p>
-<p>When your account is confirmed, visit the <a href="https://portal.respoke.io">Dev Console</a>.</p>
-<h3 id="step-2-create-an-application">Step 2: Create An Application</h3>
-<p>In the <a href="https://portal.respoke.io">Developer Console</a> go to the “Apps” page and
-click on “New App”. After you have named and created the app, click on the app
-tile to edit it.</p>
-<p>Make sure the <strong>Development Mode</strong> option is enabled (dev mode is the default).</p>
-<p>Find the <strong>App ID</strong> and copy it (not the App Secret).</p>
-<p><em>Example</em></p>
-<pre><code>3a56901d-78ca-4436-b696-4a7a66cdc1ac
-</code></pre><h3 id="step-3-html-scaffold">Step 3: HTML Scaffold</h3>
-<p>You can either use a real web server or something like <a href="http://jsfiddle.net">JSFiddle</a>. This is <strong>strictly client-side</strong> stuff (HTML, CSS and JavaScript) so you won’t need any server-side tech.</p>
-<p>We’re using jQuery here, but you’re welcome to use whatever library you prefer. Respoke has no dependencies.</p>
-<pre><code>&lt;html&gt;
+<!DOCTYPE html><html lang=en ng-app=padd><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"><title>Quickstart -</title><meta name=keywords><meta name=keywords><link rel="shortcut icon" type=image/ico href=https://www.respoke.io/favicon.ico><link type=text/css rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Source+Code+Pro"><link rel=stylesheet type=text/css href=https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css><link rel=stylesheet type=text/css href=https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css><link type=text/css rel=stylesheet href=https://www.respoke.io/min/production.css><link rel=stylesheet href=https://yandex.st/highlightjs/8.0/styles/docco.min.css><link type=text/css rel=stylesheet href=/css/site.css><script src=https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.min.js></script><script src=https://yandex.st/highlightjs/8.0/highlight.min.js></script><script src=/js/padd.js></script></head><body data-spy=scroll data-target=.secondary-nav><div id=wrap><div class=public-site><div ng-controller=NavController class="topbar-wrapper opaque"><div bfind-class-foo=@isexcited class=navigation><div onclick="$(this).next().find('ul.nav-items').toggle()" class=nav-menu-button><ul><li></li><li></li><li></li></ul></div><div class=nav-container><a class=www-link><img src=https://www.respoke.io/images/logo_respoke.png class=logo></a><ul ng-show="menuVisibility !== false" class=nav-items><li><a href=/#howitworks class=www-link>How it works</a></li><li><a href=/#pricing class=www-link>Pricing</a></li><li><a href="/">Docs</a></li><li><a href=http://community.respoke.io>Community</a></li><li><a href=/#login class="visible-xs log-in">log in</a></li><li><a href=javascript:void(0) onclick=logout() class="visible-xs log-out">log out</a></li><li><a href=/#sign-up-form class="visible-xs sign-up">Sign Up</a></li><li><a class="visible-xs portal">PORTAL</a></li></ul><div ng-show="menuVisibility !== false" class=buttons><a href=/#login class="log-in www-link">log in</a><a href=javascript:void(0) onclick=logout() class=log-out>log out</a><a href=/#sign-up-form class="sign-up www-link">Sign Up</a><a class=portal>PORTAL</a></div></div></div></div><region><div ng-controller=NavController class=how-it-works><div class=how-it-works-container><div id=content><div class=row><div class=col-md-2><div id=main-sidebar-wrap><ul id=main-sidebar class="nav affix"><li>Respoke Concepts<ul><li ng-class="{ active: currentPage === '/' }"><a href="/">Quickstart</a></li><li ng-class="{ active: currentPage === ('/concepts/brokered-auth.html') }"><a href=/concepts/brokered-auth.html>Authentication</a></li><li ng-class="{ active: currentPage === ('/concepts/calling-to-and-from-a-phone.html') }"><a href=/concepts/calling-to-and-from-a-phone.html>Calling to and from a Phone</a></li><li ng-class="{ active: currentPage === ('/concepts/connecting-with-asterisk.html') }"><a href=/concepts/connecting-with-asterisk.html>Connecting with Asterisk</a></li><li ng-class="{ active: currentPage === ('/concepts/libraries.html') }"><a href=/concepts/libraries.html>Libraries</a></li><li ng-class="{ active: currentPage === ('/concepts/rest-api.html') }"><a href=/concepts/rest-api.html>REST API Routes</a></li><li ng-class="{ active: currentPage === ('/concepts/roles-and-permissions.html') }"><a href=/concepts/roles-and-permissions.html>Roles &amp; Permissions</a></li></ul></li><li ng-class="{ active: currentPage === '/changelog.html' }"><a href=/changelog.html>Changelog</a></li><li>&nbsp;</li><li>Javascript Client<ul><li><a href=http://respoke.github.io/respoke target=_blank>Reference&nbsp;<i class="glyphicon glyphicon-share"></i></a></li><li ng-class="{ active: currentPage === ('/js-library/direct-connection.html') }"><a href=/js-library/direct-connection.html>Direct Connections</a></li><li ng-class="{ active: currentPage === ('/js-library/example-apps.html') }"><a href=/js-library/example-apps.html>Example Apps</a></li><li ng-class="{ active: currentPage === ('/js-library/respoke-js-logs.html') }"><a href=/js-library/respoke-js-logs.html>Respoke.js Logs</a></li><li ng-class="{ active: currentPage === ('/js-library/video-chat.html') }"><a href=/js-library/video-chat.html>Video Chat</a></li></ul></li><li>Admin API<ul><li>Coming soon</li></ul></li></ul></div></div><div class=col-md-7><div class=content-wrap><button id=sidebar-toggle-button onclick="$('#main-sidebar').toggle();$(this).find('i.glyphicon').toggleClass('hide');" class="btn btn xl btn-primary"><i class="glyphicon glyphicon-th-list"></i><i class="glyphicon glyphicon-remove hide"></i></button><article class=article><section class=content><h1 id=respoke-quickstart>Respoke Quickstart</h1><p>Welcome to Respoke. This quick guide should help you build a <strong>messaging and audio calling app</strong> in about 10 minutes. This tutorial uses development mode for ease of development, but all apps should be converted to using <a href=/tutorials/brokered-auth.html>brokered authentication</a> before being published.</p><h3 id=step-1-create-a-respoke-account>Step 1: Create a Respoke Account</h3><p>Go to the <a href=https://www.respoke.io>Respoke.io website</a> and sign up. It’s free.</p><p>When your account is confirmed, visit the <a href=https://portal.respoke.io>Dev Console</a>.</p><h3 id=step-2-create-an-application>Step 2: Create An Application</h3><p>In the <a href=https://portal.respoke.io>Developer Console</a> go to the “Apps” page and click on “New App”. After you have named and created the app, click on the app tile to edit it.</p><p>Make sure the <strong>Development Mode</strong> option is enabled (dev mode is the default).</p><p>Find the <strong>App ID</strong> and copy it (not the App Secret).</p><p><em>Example</em></p><pre><code>3a56901d-78ca-4436-b696-4a7a66cdc1ac
+</code></pre><h3 id=step-3-html-scaffold>Step 3: HTML Scaffold</h3><p>You can either use a real web server or something like <a href=http://jsfiddle.net>JSFiddle</a>. This is <strong>strictly client-side</strong> stuff (HTML, CSS and JavaScript) so you won’t need any server-side tech.</p><p>We’re using jQuery here, but you’re welcome to use whatever library you prefer. Respoke has no dependencies.</p><pre><code>&lt;html&gt;
     &lt;head&gt;
         &lt;!-- Respoke client library --&gt;
         &lt;script src=&quot;https://cdn.respoke.io/respoke.min.js&quot;&gt;&lt;/script&gt;
@@ -122,15 +16,11 @@ tile to edit it.</p>
         &lt;/div&gt;
     &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p><em>Pro Tip: If you’re using JSFiddle, only add the stuff inside the &lt;body&gt; tag to the HTML panel, add jQuery using the Frameworks &amp; Extensions box, and drop the Respoke library URL from the second &lt;script&gt; tag to the External Resources list.</em></p>
-<p>Add some optional CSS:</p>
-<pre><code>body {
+</code></pre><p><em>Pro Tip: If you’re using JSFiddle, only add the stuff inside the &lt;body&gt; tag to the HTML panel, add jQuery using the Frameworks &amp; Extensions box, and drop the Respoke library URL from the second &lt;script&gt; tag to the External Resources list.</em></p><p>Add some optional CSS:</p><pre><code>body {
     font-family: Arial, Helvetica;
     margin-left: 25px;
 }
-</code></pre><h3 id="step-4-connecting-to-respoke">Step 4: Connecting To Respoke</h3>
-<p>The first thing your client will need to do is connect to Respoke. All that takes is a ‘client’ object and an access token.</p>
-<pre><code>// here&#39;s the App ID value from the portal:
+</code></pre><h3 id=step-4-connecting-to-respoke>Step 4: Connecting To Respoke</h3><p>The first thing your client will need to do is connect to Respoke. All that takes is a ‘client’ object and an access token.</p><pre><code>// here&#39;s the App ID value from the portal:
 var appid = &quot;DD90A374-0C06-456F-9D4F-E8038E6523D2&quot;;
 
 // create a client object using the App ID value from Step 2
@@ -151,12 +41,7 @@ $(&quot;#doLogin&quot;).click(function () {
         endpointId: endpoint // your username is the endpoint
     });
 });
-</code></pre><p>Once you have that in place, run it. You should see the page load with a “Not Connected” status.</p>
-<p>Enter a name - whatever you want - in the User Name box and click the ‘Connect’ button. The status box should update to read “Connected To Respoke!”.</p>
-<h3 id="step-5-sending-messages">Step 5: Sending Messages</h3>
-<p>Ok, so you’re connected. Time to kick the tires by sending a message.</p>
-<p>Add a bit more to your HTML scaffold:</p>
-<pre><code>&lt;body&gt;
+</code></pre><p>Once you have that in place, run it. You should see the page load with a “Not Connected” status.</p><p>Enter a name - whatever you want - in the User Name box and click the ‘Connect’ button. The status box should update to read “Connected To Respoke!”.</p><h3 id=step-5-sending-messages>Step 5: Sending Messages</h3><p>Ok, so you’re connected. Time to kick the tires by sending a message.</p><p>Add a bit more to your HTML scaffold:</p><pre><code>&lt;body&gt;
     &lt;h3 id=&quot;status&quot;&gt;Not Connected&lt;/h3&gt;
     &lt;div id=&quot;login&quot;&gt;
         User Name:
@@ -171,8 +56,7 @@ $(&quot;#doLogin&quot;).click(function () {
         &lt;input id=&#39;sendMessage&#39; type=&#39;button&#39; value=&#39;Send Message&#39; /&gt;
     &lt;/div&gt;
 &lt;/body&gt;
-</code></pre><p>Some additional CSS will help the layout.</p>
-<pre><code>#messages {
+</code></pre><p>Some additional CSS will help the layout.</p><pre><code>#messages {
     height: 400px;
     width: 400px;
     border: 1px solid #c7c7c7;
@@ -185,15 +69,13 @@ $(&quot;#doLogin&quot;).click(function () {
     width: 400px;
     padding: 5px;
 }
-</code></pre><p>To receive messages, add a listener to the client that formats the message and adds it to the screen.</p>
-<pre><code>// listen for incoming messages
+</code></pre><p>To receive messages, add a listener to the client that formats the message and adds it to the screen.</p><pre><code>// listen for incoming messages
 client.listen(&#39;message&#39;, function(evt) {
     $(&quot;#messages&quot;).append(
         &quot;&lt;li&gt;&quot; + evt.message.message + &quot;&lt;/li&gt;&quot;
     );
 });
-</code></pre><p>To send a message, you just need to know the ID of the person (or device) you want to message. Use the ID to create an ‘endpoint’ object, and use the <a href="/js-library/endpoint.js.html#sendMessage">endpoint object’s sendMessage()</a> method:</p>
-<pre><code>$(&quot;#sendMessage&quot;).click(function (){
+</code></pre><p>To send a message, you just need to know the ID of the person (or device) you want to message. Use the ID to create an ‘endpoint’ object, and use the <a href=/js-library/endpoint.js.html#sendMessage>endpoint object’s sendMessage()</a> method:</p><pre><code>$(&quot;#sendMessage&quot;).click(function (){
 
     // get the recipient name
     var remote = $(&quot;#remoteId&quot;).val();
@@ -215,16 +97,7 @@ client.listen(&#39;message&#39;, function(evt) {
     // clear the text you just sent
     $(&quot;#textToSend&quot;).val(&#39;&#39;);
 });
-</code></pre><p><br /></p>
-<h4 id="-test-messaging-"><strong>Test messaging</strong></h4>
-<p>Open the page on two different computers, or using a private browsing session in a second window on the same computer.</p>
-<p>Log in using a different name on each.</p>
-<p>Enter the name of the <em>other</em> login into the “Send To” box.</p>
-<p>Add a message and hit the “Send Message” button. The message should appear for both users.</p>
-<h3 id="step-6-make-an-audio-call">Step 6: Make An Audio Call</h3>
-<p>Now that you can send messages between clients, it doesn’t take much to get audio calls working.</p>
-<p>Update the HTML with some buttons to attach the call handlers to.</p>
-<pre><code>&lt;div id=&quot;messaging&quot;&gt;
+</code></pre><p><br></p><h4 id=-test-messaging-><strong>Test messaging</strong></h4><p>Open the page on two different computers, or using a private browsing session in a second window on the same computer.</p><p>Log in using a different name on each.</p><p>Enter the name of the <em>other</em> login into the “Send To” box.</p><p>Add a message and hit the “Send Message” button. The message should appear for both users.</p><h3 id=step-6-make-an-audio-call>Step 6: Make An Audio Call</h3><p>Now that you can send messages between clients, it doesn’t take much to get audio calls working.</p><p>Update the HTML with some buttons to attach the call handlers to.</p><pre><code>&lt;div id=&quot;messaging&quot;&gt;
     &lt;ul id=&quot;messages&quot;&gt;&lt;/ul&gt;&lt;br /&gt;
     Send To:
     &lt;input id=&quot;remoteId&quot; type=&quot;text&quot; /&gt;&lt;br /&gt;
@@ -233,10 +106,8 @@ client.listen(&#39;message&#39;, function(evt) {
     &lt;input id=&#39;makeCall&#39; type=&#39;button&#39; value=&#39;Audio Call&#39; /&gt;
     &lt;input id=&#39;endCall&#39; type=&#39;button&#39; value=&#39;Hang Up&#39; /&gt;
 &lt;/div&gt;
-</code></pre><p>At the top of your JS, add a variable to track the active call.</p>
-<pre><code>var call = null;
-</code></pre><p>The <strong>call</strong> event handler captures the incoming call and automatically answers it.</p>
-<pre><code>// listen for, and answer, incoming calls
+</code></pre><p>At the top of your JS, add a variable to track the active call.</p><pre><code>var call = null;
+</code></pre><p>The <strong>call</strong> event handler captures the incoming call and automatically answers it.</p><pre><code>// listen for, and answer, incoming calls
 client.listen(&#39;call&#39;, function(evt) {
      call = evt.call;
      if (call.caller !== true) {
@@ -246,8 +117,7 @@ client.listen(&#39;call&#39;, function(evt) {
          });
      }
 });
-</code></pre><p>Now wire up the “Audio Call” button to a function that places a new audio call and the “Hangup” button to a function that disconnects an active call:</p>
-<pre><code>// Call somebody
+</code></pre><p>Now wire up the “Audio Call” button to a function that places a new audio call and the “Hangup” button to a function that disconnects an active call:</p><pre><code>// Call somebody
 $(&quot;#makeCall&quot;).click(function () {
     var endpoint = client.getEndpoint({ id: $(&quot;#remoteId&quot;).val() });
     call = endpoint.startAudioCall();
@@ -263,15 +133,7 @@ $(&quot;#endCall&quot;).click(function () {
         call = null;
     }
 });
-</code></pre><p><br /></p>
-<h4 id="-test-audio-calls-"><strong>Test audio calls</strong></h4>
-<p>Follow the same steps as <em>Test messaging</em>, but click the “Audio Call” button.</p>
-<p>The browser will prompt you to allow the call. Both parties must accept before the call will go through. <em>This is a WebRTC requirement for security reasons. If you host your application on a secure server (HTTPS), the user will be allowed to grant the “Allow” permission on an ongoing basis.</em></p>
-<h3 id="the-whole-enchilada">The Whole Enchilada</h3>
-<p>So there you have it. IM and voice calling in a few lines of code.</p>
-<p><a href="http://jsbin.com/jipeg">Try it live &raquo;</a></p>
-<h3 id="html">HTML</h3>
-<pre><code>&lt;!DOCTYPE html&gt;
+</code></pre><p><br></p><h4 id=-test-audio-calls-><strong>Test audio calls</strong></h4><p>Follow the same steps as <em>Test messaging</em>, but click the “Audio Call” button.</p><p>The browser will prompt you to allow the call. Both parties must accept before the call will go through. <em>This is a WebRTC requirement for security reasons. If you host your application on a secure server (HTTPS), the user will be allowed to grant the “Allow” permission on an ongoing basis.</em></p><h3 id=the-whole-enchilada>The Whole Enchilada</h3><p>So there you have it. IM and voice calling in a few lines of code.</p><p><a href=http://jsbin.com/jipeg>Try it live &raquo;</a></p><h3 id=html>HTML</h3><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
   &lt;script type=&#39;text/javascript&#39; src=&#39;https://cdn.respoke.io/respoke.min.js&#39;&gt;&lt;/script&gt;
@@ -295,8 +157,7 @@ $(&quot;#endCall&quot;).click(function () {
     &lt;/div&gt;
   &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><h3 id="css">CSS</h3>
-<pre><code>body {
+</code></pre><h3 id=css>CSS</h3><pre><code>body {
       font-family: Arial, Helvetica;
       margin-left: 25px;
 }
@@ -314,8 +175,7 @@ $(&quot;#endCall&quot;).click(function () {
     width: 400px;
     padding: 5px;
 }
-</code></pre><h3 id="javascript">JavaScript</h3>
-<pre><code>var appid = &quot;DD90A374-0C06-456F-9D4F-E8038E6523D2&quot;;
+</code></pre><h3 id=javascript>JavaScript</h3><pre><code>var appid = &quot;DD90A374-0C06-456F-9D4F-E8038E6523D2&quot;;
 var call = null;
 
 // create a client object using the App ID value from Step 2
@@ -382,134 +242,92 @@ $(&quot;#endCall&quot;).click(function () {
         call = null;
     }
 });
-</code></pre><p><br /></p>
-<p><a href="/tutorials/video-chat.html">Now you’re ready for video!</a></p>
-</section>
-                      </article><br><br><br><br>
-                    </div>
-                  </div>
-                  <div class="col-md-3">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </region>
-      </div>
-      <!-- Footer-->
-      <region>
-        <footer>
-          <div class="content-wrap">
-            <section class="copy">
-              <div class="footer">
-                <div class="footer-container">
-                  <div class="footer-links"><a href="http://digium.com/respoke"><img src="/images/digium_white.png" class="digium-logo"></a></div>
-                  <div class="footer-content">
-                    <p class="copy">Copyright &copy; 2014 D.C.S, LLC</p>
-                    <p class="copy"><a href="mailto:info@respoke.io">info@respoke.io</a></p>
-                  </div>
-                  <div class="footer-links social-links"><a href="https://twitter.com/respoke"><span class="fa fa-twitter"></span></a><a href="https://www.facebook.com/respokeIO"><span class="fa fa-facebook"></span></a><a href="https://plus.google.com/110089434291590810767" rel="publisher"><span class="fa fa-google-plus"></span></a></div>
-                </div>
-              </div>
-            </section>
-          </div>
-        </footer>
-      </region>
-    </div>
-  </body>
-</html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/stellar.js/0.6.2/jquery.stellar.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-<script>
-  // Scrollspy
-  // TODO: use angular-ui boostrap version instead
-  $('body').scrollspy({ target: '.secondary-nav', offset: 150 });
-  
-  // parallax by http://markdalgleish.com/projects/stellar.js/
-  $.stellar();
-  
-  // affixing the sidebar at high resolutions
-  var resizeEvent = function(event){
-    if($(window).width() > 990) {
-        affixLeftSidebar();
-    }
-  };
-  window.addEventListener('resize', resizeEvent);
-  resizeEvent();
-  
-  // Showing and login and signup
-  (function () {
-      var token = $.cookie('token');
-      var $login = $('.log-in');
-      var $logout = $('.log-out');
-      var $signup = $('.sign-up');
-      var $portal = $('.portal');
-      var $wwwlink = $('.www-link');
-      var $logo = $('img.logo');
-  
-      function loggedIn() {
-          $login.remove();
-          $signup.remove();
-  
-          $portal.css('display', 'inline-block');
-          $logout.css('display', 'inline-block');
-      }
-      function notLoggedIn() {
-          $portal.remove();
-          $logout.remove();
-  
-          //- $login.css('display', 'inline-block');
-          //- $signup.css('display', 'inline-block');
-      }
-  
-      var apiBase = window.location.host.replace('docs', 'api').replace(':2003', ':2000');
-      var apiUrl = apiBase.indexOf('testing.digiumlabs.com') !== -1 ? 'http://' : 'https://';
-      apiUrl += apiBase + '/v1/admins/me';
-      var publicBase = window.location.host.replace('docs', 'www').replace(':2003', ':2001');
-      var publicUrl = publicBase.indexOf('testing.digiumlabs.com') !== -1 ? 'http://' : 'https://';
-      publicUrl += publicBase;
-      var portalBase = window.location.host.replace('docs', 'portal').replace(':2003', ':2002');
-      var portalUrl = portalBase.indexOf('testing.digiumlabs.com') !== -1 ? 'http://' : 'https://';
-      portalUrl += portalBase;
-  
-      if (token) {
-          $.ajax({
-              url: apiUrl,
-              type: 'GET',
-              headers: {
-                  'Admin-Token': token
-              },
-              success: loggedIn,
-              error: notLoggedIn
-          });
-      }
-      else {
-          notLoggedIn();
-      }
-  
-      $portal.attr('href', portalUrl + $portal.attr('href'));
-      $wwwlink.each(function () {
-          $(this).attr('href', publicUrl + $(this).attr('href'))
-      });
-      $logo.attr('src', publicUrl + $logo.attr('src').replace('https://www.respoke.io',''));
-  })();
-  
-  function logout() {
-      $.removeCookie('token', { domain: '.' + window.location.hostname.split('.').slice(-2).join('.') });
-      window.location.reload();
+</code></pre><p><br></p><p><a href=/tutorials/video-chat.html>Now you’re ready for video!</a></p></section></article><br><br><br><br></div></div><div class=col-md-3></div></div></div></div></div></region></div><region><footer><div class=content-wrap><section class=copy><div class=footer><div class=footer-container><div class=footer-links><a href=http://digium.com/respoke><img src=/images/digium_white.png class=digium-logo></a></div><div class=footer-content><p class=copy>Copyright &copy; 2014 D.C.S, LLC</p><p class=copy><a href=mailto:info@respoke.io>info@respoke.io</a></p></div><div class="footer-links social-links"><a href=https://twitter.com/respoke><span class="fa fa-twitter"></span></a><a href=https://www.facebook.com/respokeIO><span class="fa fa-facebook"></span></a><a href=https://plus.google.com/110089434291590810767 rel=publisher><span class="fa fa-google-plus"></span></a></div></div></div></section></div></footer></region></div></body></html><script src=https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js></script><script src=https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/stellar.js/0.6.2/jquery.stellar.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js></script><script>// Scrollspy
+// TODO: use angular-ui boostrap version instead
+$('body').scrollspy({ target: '.secondary-nav', offset: 150 });
+
+// parallax by http://markdalgleish.com/projects/stellar.js/
+$.stellar();
+
+// affixing the sidebar at high resolutions
+var resizeEvent = function(event){
+  if($(window).width() > 990) {
+      affixLeftSidebar();
   }
-  
-  $.ajax({
-        url: '//d3px1qgagsf6ei.cloudfront.net/Scripts/f772acdb-7c45-430c-8c5a-28c3bcbb420e',
-        crossDomain: true,
-        dataType: 'script',
-        success: function () {
-            Payboard.Events.trackPage;
-        },
-        error: function () {
-            console.log("There was an error retrieving the payboard tracking script");
-        }
+};
+window.addEventListener('resize', resizeEvent);
+resizeEvent();
+
+// Showing and login and signup
+(function () {
+    var token = $.cookie('token');
+    var $login = $('.log-in');
+    var $logout = $('.log-out');
+    var $signup = $('.sign-up');
+    var $portal = $('.portal');
+    var $wwwlink = $('.www-link');
+    var $logo = $('img.logo');
+
+    function loggedIn() {
+        $login.remove();
+        $signup.remove();
+
+        $portal.css('display', 'inline-block');
+        $logout.css('display', 'inline-block');
+    }
+    function notLoggedIn() {
+        $portal.remove();
+        $logout.remove();
+
+        //- $login.css('display', 'inline-block');
+        //- $signup.css('display', 'inline-block');
+    }
+
+    var apiBase = window.location.host.replace('docs', 'api').replace(':2003', ':2000');
+    var apiUrl = apiBase.indexOf('testing.digiumlabs.com') !== -1 ? 'http://' : 'https://';
+    apiUrl += apiBase + '/v1/admins/me';
+    var publicBase = window.location.host.replace('docs', 'www').replace(':2003', ':2001');
+    var publicUrl = publicBase.indexOf('testing.digiumlabs.com') !== -1 ? 'http://' : 'https://';
+    publicUrl += publicBase;
+    var portalBase = window.location.host.replace('docs', 'portal').replace(':2003', ':2002');
+    var portalUrl = portalBase.indexOf('testing.digiumlabs.com') !== -1 ? 'http://' : 'https://';
+    portalUrl += portalBase;
+
+    if (token) {
+        $.ajax({
+            url: apiUrl,
+            type: 'GET',
+            headers: {
+                'Admin-Token': token
+            },
+            success: loggedIn,
+            error: notLoggedIn
+        });
+    }
+    else {
+        notLoggedIn();
+    }
+
+    $portal.attr('href', portalUrl + $portal.attr('href'));
+    $wwwlink.each(function () {
+        $(this).attr('href', publicUrl + $(this).attr('href'))
     });
-</script>
+    $logo.attr('src', publicUrl + $logo.attr('src').replace('https://www.respoke.io',''));
+})();
+
+function logout() {
+    $.removeCookie('token', { domain: '.' + window.location.hostname.split('.').slice(-2).join('.') });
+    window.location.reload();
+}
+
+$.ajax({
+      url: '//d3px1qgagsf6ei.cloudfront.net/Scripts/f772acdb-7c45-430c-8c5a-28c3bcbb420e',
+      crossDomain: true,
+      dataType: 'script',
+      success: function () {
+          Payboard.Events.trackPage;
+      },
+      error: function () {
+          console.log("There was an error retrieving the payboard tracking script");
+      }
+  });</script>

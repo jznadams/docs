@@ -1,124 +1,13 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="padd">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-    <title>Connecting with Asterisk - 
-    </title>
-    <meta name="keywords" content="">
-    <meta name="keywords" content="">
-    <link rel="shortcut icon" type="image/ico" href="https://www.respoke.io/favicon.ico">
-    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Source+Code+Pro">
-    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-    <link type="text/css" rel="stylesheet" href="https://www.respoke.io/min/production.css">
-    <link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/docco.min.css">
-    <link type="text/css" rel="stylesheet" href="/css/site.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.min.js"></script>
-    <script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
-    <script src="/js/padd.js"></script>
-  </head>
-  <body data-spy="scroll" data-target=".secondary-nav">
-    <div id="wrap">
-      <div class="public-site">
-        <div ng-controller="NavController" class="topbar-wrapper opaque">
-          <div bfind-class-foo="@isexcited" class="navigation">
-            <div onclick="$(this).next().find('ul.nav-items').toggle()" class="nav-menu-button">
-              <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-              </ul>
-            </div>
-            <div class="nav-container"><a href="" class="www-link"><img src="https://www.respoke.io/images/logo_respoke.png" class="logo"></a>
-              <ul ng-show="menuVisibility !== false" class="nav-items">
-                <li><a href="/#howitworks" class="www-link">How it works</a></li>
-                <li><a href="/#pricing" class="www-link">Pricing</a></li>
-                <li><a href="/">Docs</a></li>
-                <li><a href="http://community.respoke.io">Community</a></li>
-                <li><a href="/#login" class="visible-xs log-in">log in</a></li>
-                <li><a href="javascript:void(0)" onclick="logout()" class="visible-xs log-out">log out</a></li>
-                <li><a href="/#sign-up-form" class="visible-xs sign-up">Sign Up</a></li>
-                <li><a href="" class="visible-xs portal">PORTAL</a></li>
-              </ul>
-              <div ng-show="menuVisibility !== false" class="buttons"><a href="/#login" class="log-in www-link">log in</a><a href="javascript:void(0)" onclick="logout()" class="log-out">log out</a><a href="/#sign-up-form" class="sign-up www-link">Sign Up</a><a href="" class="portal">PORTAL</a></div>
-            </div>
-          </div>
-        </div>
-        <!-- Main Page Content-->
-        <region>
-          <div ng-controller="NavController" class="how-it-works">
-            <div class="how-it-works-container">
-              <div id="content">
-                <div class="row">
-                  <div class="col-md-2">
-                    <div id="main-sidebar-wrap">
-                      <ul id="main-sidebar" class="nav affix">
-                        <li>Respoke Concepts
-                          <ul>
-                            <li ng-class="{ active: currentPage === '/' }"><a href="/">Quickstart</a></li>
-                            <li ng-class="{ active: currentPage === ('/concepts/brokered-auth.html') }"><a href="/concepts/brokered-auth.html">Authentication</a></li>
-                            <li ng-class="{ active: currentPage === ('/concepts/calling-to-and-from-a-phone.html') }"><a href="/concepts/calling-to-and-from-a-phone.html">Calling to and from a Phone</a></li>
-                            <li ng-class="{ active: currentPage === ('/concepts/connecting-with-asterisk.html') }"><a href="/concepts/connecting-with-asterisk.html">Connecting with Asterisk</a></li>
-                            <li ng-class="{ active: currentPage === ('/concepts/libraries.html') }"><a href="/concepts/libraries.html">Libraries</a></li>
-                            <li ng-class="{ active: currentPage === ('/concepts/rest-api.html') }"><a href="/concepts/rest-api.html">REST API Routes</a></li>
-                            <li ng-class="{ active: currentPage === ('/concepts/roles-and-permissions.html') }"><a href="/concepts/roles-and-permissions.html">Roles &amp; Permissions</a></li>
-                          </ul>
-                        </li>
-                        <li ng-class="{ active: currentPage === '/changelog.html' }"><a href="/changelog.html">Changelog</a></li>
-                        <li>&nbsp;</li>
-                        <li>Javascript Client
-                          <ul>
-                            <li><a href="http://respoke.github.io/respoke" target="_blank">Reference&nbsp;<i class="glyphicon glyphicon-share"></i></a></li>
-                            <li ng-class="{ active: currentPage === ('/js-library/direct-connection.html') }"><a href="/js-library/direct-connection.html">Direct Connections</a></li>
-                            <li ng-class="{ active: currentPage === ('/js-library/example-apps.html') }"><a href="/js-library/example-apps.html">Example Apps</a></li>
-                            <li ng-class="{ active: currentPage === ('/js-library/respoke-js-logs.html') }"><a href="/js-library/respoke-js-logs.html">Respoke.js Logs</a></li>
-                            <li ng-class="{ active: currentPage === ('/js-library/video-chat.html') }"><a href="/js-library/video-chat.html">Video Chat</a></li>
-                          </ul>
-                        </li>
-                        <li>Admin API
-                          <ul>
-                            <li>Coming soon</li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="col-md-7">
-                    <div class="content-wrap">
-                      <button id="sidebar-toggle-button" onclick="$('#main-sidebar').toggle();$(this).find('i.glyphicon').toggleClass('hide');" class="btn btn xl btn-primary"><i class="glyphicon glyphicon-th-list"></i><i class="glyphicon glyphicon-remove hide"></i></button>
-                      <article class="article">
-                        <section class="content"><h1 id="connecting-to-respoke-with-asterisk">Connecting to Respoke with Asterisk</h1>
-<h2 id="summary">Summary</h2>
-<p>In the course of your app development, you may find it convenient to place calls from or into your <a href="http://asterisk.org/">Asterisk</a> phone system. Asterisk’s <a href="https://github.com/respoke/chan_respoke">Respoke module</a> makes this possible. This tutorial only covers calls from a web app into Asterisk.</p>
-<h3 id="assumptions">Assumptions</h3>
-<ol>
-<li>You have a Respoke app with an app secret.</li>
-<li>You have an Asterisk server on which you have administrative access.</li>
-<li>You are comfortable compiling and configuring Asterisk.</li>
-</ol>
-<h2 id="setup">Setup</h2>
-<h3 id="1-install-asterisk-from-the-13-branch-in-svn">1: Install Asterisk from the 13 branch in SVN</h3>
-<p>Install Asterisk from the <a href="http://svn.asterisk.org/svn/asterisk/branches/13/">13 branch in SVN</a>. How to install Asterisk is outside the scope of this document, but if Asterisk is not already installed and you are unsure how to proceed see the <a href="https://wiki.asterisk.org/wiki/display/AST/Installing+Asterisk">Asterisk wiki</a> for more information. Also <a href="https://wiki.asterisk.org/wiki/display/AST/Building+and+Installing+pjproject">install pjproject</a>.</p>
-<h3 id="2-install-the-respoke-asterisk-module">2: Install the Respoke Asterisk module</h3>
-<p>Once Asterisk has been installed on your server, download <a href="https://github.com/respoke/chan_respoke">the Respoke Asterisk module from GitHub</a>. Enter into the chan_respoke directory and issue the following command with superuser access. See the included README file for more information.</p>
-<pre><code>$ git clone https://github.com/respoke/chan_respoke.git
+<!DOCTYPE html><html lang=en ng-app=padd><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"><title>Connecting with Asterisk -</title><meta name=keywords><meta name=keywords><link rel="shortcut icon" type=image/ico href=https://www.respoke.io/favicon.ico><link type=text/css rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Source+Code+Pro"><link rel=stylesheet type=text/css href=https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css><link rel=stylesheet type=text/css href=https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css><link type=text/css rel=stylesheet href=https://www.respoke.io/min/production.css><link rel=stylesheet href=https://yandex.st/highlightjs/8.0/styles/docco.min.css><link type=text/css rel=stylesheet href=/css/site.css><script src=https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.min.js></script><script src=https://yandex.st/highlightjs/8.0/highlight.min.js></script><script src=/js/padd.js></script></head><body data-spy=scroll data-target=.secondary-nav><div id=wrap><div class=public-site><div ng-controller=NavController class="topbar-wrapper opaque"><div bfind-class-foo=@isexcited class=navigation><div onclick="$(this).next().find('ul.nav-items').toggle()" class=nav-menu-button><ul><li></li><li></li><li></li></ul></div><div class=nav-container><a class=www-link><img src=https://www.respoke.io/images/logo_respoke.png class=logo></a><ul ng-show="menuVisibility !== false" class=nav-items><li><a href=/#howitworks class=www-link>How it works</a></li><li><a href=/#pricing class=www-link>Pricing</a></li><li><a href="/">Docs</a></li><li><a href=http://community.respoke.io>Community</a></li><li><a href=/#login class="visible-xs log-in">log in</a></li><li><a href=javascript:void(0) onclick=logout() class="visible-xs log-out">log out</a></li><li><a href=/#sign-up-form class="visible-xs sign-up">Sign Up</a></li><li><a class="visible-xs portal">PORTAL</a></li></ul><div ng-show="menuVisibility !== false" class=buttons><a href=/#login class="log-in www-link">log in</a><a href=javascript:void(0) onclick=logout() class=log-out>log out</a><a href=/#sign-up-form class="sign-up www-link">Sign Up</a><a class=portal>PORTAL</a></div></div></div></div><region><div ng-controller=NavController class=how-it-works><div class=how-it-works-container><div id=content><div class=row><div class=col-md-2><div id=main-sidebar-wrap><ul id=main-sidebar class="nav affix"><li>Respoke Concepts<ul><li ng-class="{ active: currentPage === '/' }"><a href="/">Quickstart</a></li><li ng-class="{ active: currentPage === ('/concepts/brokered-auth.html') }"><a href=/concepts/brokered-auth.html>Authentication</a></li><li ng-class="{ active: currentPage === ('/concepts/calling-to-and-from-a-phone.html') }"><a href=/concepts/calling-to-and-from-a-phone.html>Calling to and from a Phone</a></li><li ng-class="{ active: currentPage === ('/concepts/connecting-with-asterisk.html') }"><a href=/concepts/connecting-with-asterisk.html>Connecting with Asterisk</a></li><li ng-class="{ active: currentPage === ('/concepts/libraries.html') }"><a href=/concepts/libraries.html>Libraries</a></li><li ng-class="{ active: currentPage === ('/concepts/rest-api.html') }"><a href=/concepts/rest-api.html>REST API Routes</a></li><li ng-class="{ active: currentPage === ('/concepts/roles-and-permissions.html') }"><a href=/concepts/roles-and-permissions.html>Roles &amp; Permissions</a></li></ul></li><li ng-class="{ active: currentPage === '/changelog.html' }"><a href=/changelog.html>Changelog</a></li><li>&nbsp;</li><li>Javascript Client<ul><li><a href=http://respoke.github.io/respoke target=_blank>Reference&nbsp;<i class="glyphicon glyphicon-share"></i></a></li><li ng-class="{ active: currentPage === ('/js-library/direct-connection.html') }"><a href=/js-library/direct-connection.html>Direct Connections</a></li><li ng-class="{ active: currentPage === ('/js-library/example-apps.html') }"><a href=/js-library/example-apps.html>Example Apps</a></li><li ng-class="{ active: currentPage === ('/js-library/respoke-js-logs.html') }"><a href=/js-library/respoke-js-logs.html>Respoke.js Logs</a></li><li ng-class="{ active: currentPage === ('/js-library/video-chat.html') }"><a href=/js-library/video-chat.html>Video Chat</a></li></ul></li><li>Admin API<ul><li>Coming soon</li></ul></li></ul></div></div><div class=col-md-7><div class=content-wrap><button id=sidebar-toggle-button onclick="$('#main-sidebar').toggle();$(this).find('i.glyphicon').toggleClass('hide');" class="btn btn xl btn-primary"><i class="glyphicon glyphicon-th-list"></i><i class="glyphicon glyphicon-remove hide"></i></button><article class=article><section class=content><h1 id=connecting-to-respoke-with-asterisk>Connecting to Respoke with Asterisk</h1><h2 id=summary>Summary</h2><p>In the course of your app development, you may find it convenient to place calls from or into your <a href="http://asterisk.org/">Asterisk</a> phone system. Asterisk’s <a href=https://github.com/respoke/chan_respoke>Respoke module</a> makes this possible. This tutorial only covers calls from a web app into Asterisk.</p><h3 id=assumptions>Assumptions</h3><ol><li>You have a Respoke app with an app secret.</li><li>You have an Asterisk server on which you have administrative access.</li><li>You are comfortable compiling and configuring Asterisk.</li></ol><h2 id=setup>Setup</h2><h3 id=1-install-asterisk-from-the-13-branch-in-svn>1: Install Asterisk from the 13 branch in SVN</h3><p>Install Asterisk from the <a href="http://svn.asterisk.org/svn/asterisk/branches/13/">13 branch in SVN</a>. How to install Asterisk is outside the scope of this document, but if Asterisk is not already installed and you are unsure how to proceed see the <a href=https://wiki.asterisk.org/wiki/display/AST/Installing+Asterisk>Asterisk wiki</a> for more information. Also <a href=https://wiki.asterisk.org/wiki/display/AST/Building+and+Installing+pjproject>install pjproject</a>.</p><h3 id=2-install-the-respoke-asterisk-module>2: Install the Respoke Asterisk module</h3><p>Once Asterisk has been installed on your server, download <a href=https://github.com/respoke/chan_respoke>the Respoke Asterisk module from GitHub</a>. Enter into the chan_respoke directory and issue the following command with superuser access. See the included README file for more information.</p><pre><code>$ git clone https://github.com/respoke/chan_respoke.git
 $ cd chan_respoke
 $ make &amp;&amp; sudo make install
-</code></pre><h3 id="3-set-up-tls-keys-for-connecting-securely-to-respoke">3. Set up TLS keys for connecting securely to Respoke</h3>
-<p>On your Asterisk server, make a directory named “keys” to store your keys in. This code assumes Asterisk has been installed inside /etc/, but this may be different on your server.</p>
-<pre><code>$ cd /etc/asterisk
+</code></pre><h3 id=3-set-up-tls-keys-for-connecting-securely-to-respoke>3. Set up TLS keys for connecting securely to Respoke</h3><p>On your Asterisk server, make a directory named “keys” to store your keys in. This code assumes Asterisk has been installed inside /etc/, but this may be different on your server.</p><pre><code>$ cd /etc/asterisk
 $ mkdir keys
 $ cd keys
-</code></pre><p>Next, use the “ast_tls_cert” script in the “contrib/scripts” directory inside the Asterisk source code directory to make a self-signed certificate authority and an Asterisk certificate. You’ll be asked to enter a passphrase for your key. Remember it! You’ll need to enter it three times. You may have to use <code>sudo</code> to write the keys out, but remember that you shouldn’t run Asterisk as root.</p>
-<pre><code>$ # cd into the directory where the Asterisk source code is located
+</code></pre><p>Next, use the “ast_tls_cert” script in the “contrib/scripts” directory inside the Asterisk source code directory to make a self-signed certificate authority and an Asterisk certificate. You’ll be asked to enter a passphrase for your key. Remember it! You’ll need to enter it three times. You may have to use <code>sudo</code> to write the keys out, but remember that you shouldn’t run Asterisk as root.</p><pre><code>$ # cd into the directory where the Asterisk source code is located
 $ ./contrib/scripts/ast_tls_cert -C respoke-asterisk.mycompany.com -O &quot;My Respoke App&quot; -d /etc/asterisk/keys
-</code></pre><p>Now generate the certificate.  You’ll be asked to enter in your passphrase again.</p>
-<pre><code>$ ./contrib/scripts/ast_tls_cert -m client -c /etc/asterisk/keys/ca.crt -k /etc/asterisk/keys/ca.key -C respoke-asterisk.myrespokeapp.com -O &quot;My Respoke App&quot; -d /etc/asterisk/keys -o respoke-asterisk.myrespokeapp.com
-</code></pre><h3 id="4-configure-the-respoke-module-for-asterisk">4. Configure the Respoke module for Asterisk</h3>
-<p>Create a “respoke.conf” file under /etc/asterisk (or wherever your Asterisk configuration files are installed) and add the following settings. These settings allows anonymous access into Asterisk from the configured Respoke app. Incoming offers, for instance, are passed into the dialplan (default context) where they are accepted or rejected based upon configured extensions.</p>
-<pre><code>[transport]
+</code></pre><p>Now generate the certificate. You’ll be asked to enter in your passphrase again.</p><pre><code>$ ./contrib/scripts/ast_tls_cert -m client -c /etc/asterisk/keys/ca.crt -k /etc/asterisk/keys/ca.key -C respoke-asterisk.myrespokeapp.com -O &quot;My Respoke App&quot; -d /etc/asterisk/keys -o respoke-asterisk.myrespokeapp.com
+</code></pre><h3 id=4-configure-the-respoke-module-for-asterisk>4. Configure the Respoke module for Asterisk</h3><p>Create a “respoke.conf” file under /etc/asterisk (or wherever your Asterisk configuration files are installed) and add the following settings. These settings allows anonymous access into Asterisk from the configured Respoke app. Incoming offers, for instance, are passed into the dialplan (default context) where they are accepted or rejected based upon configured extensions.</p><pre><code>[transport]
 type=transport
 protocol=socket.io
 
@@ -145,9 +34,7 @@ register=no
 [sales](endpoint_t) ; put your desired Respoke endpoint id in the square brackets
 
 [support](endpoint_t) ; put your desired Respoke endpoint id in the square brackets
-</code></pre><h3 id="5-configure-asterisk-call-support">5. Configure Asterisk Call Support</h3>
-<p>After adding the respoke.conf file, the rest of the setup follows a typical Asterisk call configuration setup. In this example we want to be able to dial two SIP phones, one for “sales” and one for “support”. Add the following to pjsip.conf:</p>
-<pre><code>[transport]
+</code></pre><h3 id=5-configure-asterisk-call-support>5. Configure Asterisk Call Support</h3><p>After adding the respoke.conf file, the rest of the setup follows a typical Asterisk call configuration setup. In this example we want to be able to dial two SIP phones, one for “sales” and one for “support”. Add the following to pjsip.conf:</p><pre><code>[transport]
 type=transport
 protocol=udp
 bind=0.0.0.0
@@ -175,8 +62,7 @@ contact= ; the support phone sip uri
 
 [support](endpoint_t)
 aors=support
-</code></pre><p>Be sure to add the appropriate sip uri for each contact (sales and support). Now add the extensions to the dialplan’s default context in extensions.conf:</p>
-<pre><code>[general]
+</code></pre><p>Be sure to add the appropriate sip uri for each contact (sales and support). Now add the extensions to the dialplan’s default context in extensions.conf:</p><pre><code>[general]
 
 [default]
 exten =&gt; sales,1,Dial(PJSIP/sales)
@@ -184,13 +70,8 @@ exten =&gt; sales,1,Dial(PJSIP/sales)
 
 exten =&gt; support,1,Dial(PJSIP/support)
     same =&gt; n,Hangup
-</code></pre><p>That should be it!  Asterisk should now be ready to participate in a basic Respoke click to call scenario.</p>
-<h3 id="6-call-your-new-asterisk-endpoint-">6. Call your new Asterisk endpoint.</h3>
-<p>All that’s left to be done is to set up your web app to call your new Asterisk endpoint.</p>
-<p>Put this in your HTML:</p>
-<pre><code>&lt;script type=&#39;text/javascript&#39; src=&#39;https://cdn.respoke.io/respoke.min.js&#39;&gt;&lt;/script&gt;
-</code></pre><p>And use this JavaScript, which will call the “sales” endpoint.</p>
-<pre><code>var client = respoke.createClient({
+</code></pre><p>That should be it! Asterisk should now be ready to participate in a basic Respoke click to call scenario.</p><h3 id=6-call-your-new-asterisk-endpoint->6. Call your new Asterisk endpoint.</h3><p>All that’s left to be done is to set up your web app to call your new Asterisk endpoint.</p><p>Put this in your HTML:</p><pre><code>&lt;script type=&#39;text/javascript&#39; src=&#39;https://cdn.respoke.io/respoke.min.js&#39;&gt;&lt;/script&gt;
+</code></pre><p>And use this JavaScript, which will call the “sales” endpoint.</p><pre><code>var client = respoke.createClient({
     endpointId: &quot;bob&quot;,
     appId: &quot;XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX&quot;,
     developmentMode: true
@@ -204,132 +85,92 @@ client.connect({
         });
     }
 });
-</code></pre></section>
-                      </article><br><br><br><br>
-                    </div>
-                  </div>
-                  <div class="col-md-3">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </region>
-      </div>
-      <!-- Footer-->
-      <region>
-        <footer>
-          <div class="content-wrap">
-            <section class="copy">
-              <div class="footer">
-                <div class="footer-container">
-                  <div class="footer-links"><a href="http://digium.com/respoke"><img src="/images/digium_white.png" class="digium-logo"></a></div>
-                  <div class="footer-content">
-                    <p class="copy">Copyright &copy; 2014 D.C.S, LLC</p>
-                    <p class="copy"><a href="mailto:info@respoke.io">info@respoke.io</a></p>
-                  </div>
-                  <div class="footer-links social-links"><a href="https://twitter.com/respoke"><span class="fa fa-twitter"></span></a><a href="https://www.facebook.com/respokeIO"><span class="fa fa-facebook"></span></a><a href="https://plus.google.com/110089434291590810767" rel="publisher"><span class="fa fa-google-plus"></span></a></div>
-                </div>
-              </div>
-            </section>
-          </div>
-        </footer>
-      </region>
-    </div>
-  </body>
-</html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/stellar.js/0.6.2/jquery.stellar.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-<script>
-  // Scrollspy
-  // TODO: use angular-ui boostrap version instead
-  $('body').scrollspy({ target: '.secondary-nav', offset: 150 });
-  
-  // parallax by http://markdalgleish.com/projects/stellar.js/
-  $.stellar();
-  
-  // affixing the sidebar at high resolutions
-  var resizeEvent = function(event){
-    if($(window).width() > 990) {
-        affixLeftSidebar();
-    }
-  };
-  window.addEventListener('resize', resizeEvent);
-  resizeEvent();
-  
-  // Showing and login and signup
-  (function () {
-      var token = $.cookie('token');
-      var $login = $('.log-in');
-      var $logout = $('.log-out');
-      var $signup = $('.sign-up');
-      var $portal = $('.portal');
-      var $wwwlink = $('.www-link');
-      var $logo = $('img.logo');
-  
-      function loggedIn() {
-          $login.remove();
-          $signup.remove();
-  
-          $portal.css('display', 'inline-block');
-          $logout.css('display', 'inline-block');
-      }
-      function notLoggedIn() {
-          $portal.remove();
-          $logout.remove();
-  
-          //- $login.css('display', 'inline-block');
-          //- $signup.css('display', 'inline-block');
-      }
-  
-      var apiBase = window.location.host.replace('docs', 'api').replace(':2003', ':2000');
-      var apiUrl = apiBase.indexOf('testing.digiumlabs.com') !== -1 ? 'http://' : 'https://';
-      apiUrl += apiBase + '/v1/admins/me';
-      var publicBase = window.location.host.replace('docs', 'www').replace(':2003', ':2001');
-      var publicUrl = publicBase.indexOf('testing.digiumlabs.com') !== -1 ? 'http://' : 'https://';
-      publicUrl += publicBase;
-      var portalBase = window.location.host.replace('docs', 'portal').replace(':2003', ':2002');
-      var portalUrl = portalBase.indexOf('testing.digiumlabs.com') !== -1 ? 'http://' : 'https://';
-      portalUrl += portalBase;
-  
-      if (token) {
-          $.ajax({
-              url: apiUrl,
-              type: 'GET',
-              headers: {
-                  'Admin-Token': token
-              },
-              success: loggedIn,
-              error: notLoggedIn
-          });
-      }
-      else {
-          notLoggedIn();
-      }
-  
-      $portal.attr('href', portalUrl + $portal.attr('href'));
-      $wwwlink.each(function () {
-          $(this).attr('href', publicUrl + $(this).attr('href'))
-      });
-      $logo.attr('src', publicUrl + $logo.attr('src').replace('https://www.respoke.io',''));
-  })();
-  
-  function logout() {
-      $.removeCookie('token', { domain: '.' + window.location.hostname.split('.').slice(-2).join('.') });
-      window.location.reload();
+</code></pre></section></article><br><br><br><br></div></div><div class=col-md-3></div></div></div></div></div></region></div><region><footer><div class=content-wrap><section class=copy><div class=footer><div class=footer-container><div class=footer-links><a href=http://digium.com/respoke><img src=/images/digium_white.png class=digium-logo></a></div><div class=footer-content><p class=copy>Copyright &copy; 2014 D.C.S, LLC</p><p class=copy><a href=mailto:info@respoke.io>info@respoke.io</a></p></div><div class="footer-links social-links"><a href=https://twitter.com/respoke><span class="fa fa-twitter"></span></a><a href=https://www.facebook.com/respokeIO><span class="fa fa-facebook"></span></a><a href=https://plus.google.com/110089434291590810767 rel=publisher><span class="fa fa-google-plus"></span></a></div></div></div></section></div></footer></region></div></body></html><script src=https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js></script><script src=https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/stellar.js/0.6.2/jquery.stellar.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js></script><script>// Scrollspy
+// TODO: use angular-ui boostrap version instead
+$('body').scrollspy({ target: '.secondary-nav', offset: 150 });
+
+// parallax by http://markdalgleish.com/projects/stellar.js/
+$.stellar();
+
+// affixing the sidebar at high resolutions
+var resizeEvent = function(event){
+  if($(window).width() > 990) {
+      affixLeftSidebar();
   }
-  
-  $.ajax({
-        url: '//d3px1qgagsf6ei.cloudfront.net/Scripts/f772acdb-7c45-430c-8c5a-28c3bcbb420e',
-        crossDomain: true,
-        dataType: 'script',
-        success: function () {
-            Payboard.Events.trackPage;
-        },
-        error: function () {
-            console.log("There was an error retrieving the payboard tracking script");
-        }
+};
+window.addEventListener('resize', resizeEvent);
+resizeEvent();
+
+// Showing and login and signup
+(function () {
+    var token = $.cookie('token');
+    var $login = $('.log-in');
+    var $logout = $('.log-out');
+    var $signup = $('.sign-up');
+    var $portal = $('.portal');
+    var $wwwlink = $('.www-link');
+    var $logo = $('img.logo');
+
+    function loggedIn() {
+        $login.remove();
+        $signup.remove();
+
+        $portal.css('display', 'inline-block');
+        $logout.css('display', 'inline-block');
+    }
+    function notLoggedIn() {
+        $portal.remove();
+        $logout.remove();
+
+        //- $login.css('display', 'inline-block');
+        //- $signup.css('display', 'inline-block');
+    }
+
+    var apiBase = window.location.host.replace('docs', 'api').replace(':2003', ':2000');
+    var apiUrl = apiBase.indexOf('testing.digiumlabs.com') !== -1 ? 'http://' : 'https://';
+    apiUrl += apiBase + '/v1/admins/me';
+    var publicBase = window.location.host.replace('docs', 'www').replace(':2003', ':2001');
+    var publicUrl = publicBase.indexOf('testing.digiumlabs.com') !== -1 ? 'http://' : 'https://';
+    publicUrl += publicBase;
+    var portalBase = window.location.host.replace('docs', 'portal').replace(':2003', ':2002');
+    var portalUrl = portalBase.indexOf('testing.digiumlabs.com') !== -1 ? 'http://' : 'https://';
+    portalUrl += portalBase;
+
+    if (token) {
+        $.ajax({
+            url: apiUrl,
+            type: 'GET',
+            headers: {
+                'Admin-Token': token
+            },
+            success: loggedIn,
+            error: notLoggedIn
+        });
+    }
+    else {
+        notLoggedIn();
+    }
+
+    $portal.attr('href', portalUrl + $portal.attr('href'));
+    $wwwlink.each(function () {
+        $(this).attr('href', publicUrl + $(this).attr('href'))
     });
-</script>
+    $logo.attr('src', publicUrl + $logo.attr('src').replace('https://www.respoke.io',''));
+})();
+
+function logout() {
+    $.removeCookie('token', { domain: '.' + window.location.hostname.split('.').slice(-2).join('.') });
+    window.location.reload();
+}
+
+$.ajax({
+      url: '//d3px1qgagsf6ei.cloudfront.net/Scripts/f772acdb-7c45-430c-8c5a-28c3bcbb420e',
+      crossDomain: true,
+      dataType: 'script',
+      success: function () {
+          Payboard.Events.trackPage;
+      },
+      error: function () {
+          console.log("There was an error retrieving the payboard tracking script");
+      }
+  });</script>
